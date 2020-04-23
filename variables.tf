@@ -1,25 +1,25 @@
 variable "resource_group_name" {
-  default     = ""
+  default     = "test"
   description = "Name of the resource group to place App Gateway in."
 }
 variable "resource_group_location" {
-  default     = ""
+  default     = "East US"
   description = "Location of the resource group to place App Gateway in."
 }
 variable "application_gateway_name" {
-  default     = ""
+  default     = "testst"
   description = "Name of App Gateway"
 }
 variable "virtual_network_name" {
-  default     = ""
+  default     = "vnet"
   description = "Name of the vNet place App Gateway in."
 }
 variable "virtual_network_address_space" {
-  default     = ""
+  default     = "10.6.0.0/16"
   description = "vNet Address Space."
 }
 variable "subnet_name" {
-  default     = ""
+  default     = "subnet"
   description = "Name of the subnet place App Gateway in."
 }
 variable "subnet_address_space" {
@@ -32,7 +32,7 @@ variable "public_ip_name" {
 }
 variable "Gateway_IP_Config" {
   default     = ""
-  description = "Name of the sApp Gateway PIP."
+  description = "Name of the App Gateway PIP."
 }
 variable "backend_address_pools" {
   description = "List of backend address pools."
