@@ -15,7 +15,7 @@ variable "virtual_network_name" {
   description = "Name of the vNet place App Gateway in."
 }
 variable "virtual_network_address_space" {
-  default     = "10.6.0.0/16"
+  default     = ["10.6.0.0/16"]
   description = "vNet Address Space."
 }
 variable "subnet_name" {
