@@ -101,12 +101,12 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
     for_each = var.rewrite_rule_set
     content {
       name = rewrite_rule_set.value.name
-      /*
       dynamic "rewrite_rule" {
         for_each = rewrite_rule_set.value.rewrite_rule
         content {
           name          = rewrite_rule.value.name
           rule_sequence = rewrite_rule.value.rule_sequence
+          /*
           dynamic "condition" {
             for_each = rewrite_rule_set.value.rewrite_rule.value.condition
             content {
@@ -130,12 +130,12 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
               header_value = response_header_configuration.value.header_value
             }
           }
+           */
         }
       }
-      */
     }
   }
-  
+
   dynamic "url_path_map" {
     for_each = var.url_path_map
     content {
