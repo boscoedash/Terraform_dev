@@ -1,34 +1,38 @@
 variable "resource_group_name" {
-  default     = "test"
+  default     = "RG-GW"
   description = "Name of the resource group to place App Gateway in."
 }
 variable "resource_group_location" {
-  default     = "East US"
+  default     = "South Central US"
   description = "Location of the resource group to place App Gateway in."
 }
 variable "application_gateway_name" {
-  default     = "testst"
+  default     = "GW01"
   description = "Name of App Gateway"
 }
 variable "virtual_network_name" {
-  default     = "vnet"
+  default     = "vnet01"
   description = "Name of the vNet place App Gateway in."
 }
 variable "virtual_network_address_space" {
-  default     = ["10.6.0.0/16"]
+  default     = ["10.0.0.0/16"]
   description = "vNet Address Space."
 }
 variable "subnet_name" {
-  default     = "subnet"
+  default     = "subnet-gw01"
   description = "Name of the subnet place App Gateway in."
 }
 variable "subnet_address_space" {
-  default     = "10.254.0.0/24"
+  default     = "10.0.1.0/24"
   description = "vNet Address Space."
 }
 variable "public_ip_name" {
-  default     = "my-gateway-ip-configuration"
-  description = "Name of the sApp Gateway PIP."
+  default     = "gw01-pip"
+  description = "Name of the App Gateway PIP."
+}
+variable "public_ip_allocation_method" {
+  description = "Is the public IP address static?"
+  default     = "Dynamic"
 }
 variable "Gateway_IP_Config" {
   default     = ""
@@ -38,15 +42,10 @@ variable "backend_address_pools" {
   description = "List of backend address pools."
   default     = [
       {
-        name         = "App_Pool_1"
+        name         = "be-pool-01"
         ip_addresses = ["", ""]
         fqdns        = ["", ""]
-      },
-      {
-        name         = "App_Pool_2"
-        ip_addresses = ["", ""]
-        fqdns        = ["", ""]
-      },
+      }
   ]
 }
 variable "backend_http_settings" {
@@ -58,9 +57,9 @@ variable "backend_http_settings" {
         path                                = ""
         port                                = 80
         is_https                            = false
-        request_timeout                     = 60
+        request_timeout                     = 20
         probe_name                          = "probe1"
-        pick_host_name_from_backend_address = true
+        pick_host_name_from_backend_address = false
       }
   ]
 }
@@ -83,16 +82,12 @@ variable "request_routing_rules" {
       {
         name                       = "http to app1"
         http_listener_name         = "http"
-        backend_address_pool_name  = "App_Pool_1"
+        backend_address_pool_name  = "be-pool-01"
         backend_http_settings_name = "HTTP Settings 1"
         is_path_based              = true
         url_path_map_name          = "Path map 1"
       }
   ]
-}
-variable "public_ip_allocation_method" {
-  description = "Is the public IP address of the App Gateway static?"
-  default     = "Dynamic"
 }
 variable "application_gateway_sku_name" {
   description = "Name of App Gateway SKU."
@@ -136,11 +131,11 @@ variable "redirect_configurations" {
   default  = [
         {
             name                   = "Redirect Configuration 1"
-            redirect_type          = "" 
+            redirect_type          = "Permanent" 
             target_listener_name   = ""
-            target_url             = ""
-            include_path           = ""
-            include_query_string   = ""
+            target_url             = "http://contoso.com"
+            include_path           = "Yes"
+            include_query_string   = "Yes"
         }
   ]
 }
@@ -155,22 +150,22 @@ variable "rewrite_rule_set" {
           rule_sequence = 100,
           condition     = [
             {
-                variable    = "",
-                pattern     = "",
+                variable    = "HTTP header",
+                pattern     = "http://contoso-1.com",
                 ignore_case = false,
                 negate      = false
             }
           ]
           request_header_configuration  = [
             {
-                header_name  = "",
+                header_name  = "X-Forwarded-Proto",
                 header_value = ""
             }
           ]
           response_header_configuration = [
             {
-                header_name  = "",
-                header_value = ""
+                header_name  = "Location",
+                header_value = "http://contoso.com"
             }
           ]
         }
