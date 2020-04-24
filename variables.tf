@@ -34,6 +34,7 @@ variable "public_ip_allocation_method" {
   description = "Is the public IP address static?"
   default     = "Dynamic"
 }
+/*
 variable "Gateway_IP_Config" {
   default     = ""
   description = "Name of the App Gateway PIP."
@@ -173,3 +174,4 @@ variable "rewrite_rule_set" {
     }
   ]
 }
+*/
