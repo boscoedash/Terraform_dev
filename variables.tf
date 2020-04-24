@@ -134,8 +134,8 @@ variable "redirect_configurations" {
             redirect_type          = "Permanent" 
             target_listener_name   = ""
             target_url             = "http://contoso.com"
-            include_path           = "Yes"
-            include_query_string   = "Yes"
+            include_path           = "True"
+            include_query_string   = "True"
         }
   ]
 }
