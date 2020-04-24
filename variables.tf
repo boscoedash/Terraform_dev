@@ -149,7 +149,7 @@ variable "rewrite_rule_set" {
       rewrite_rule = [
         {
           name          = "rule1",
-          rule_sequence = 100/*,
+          rule_sequence = 100,
           condition     = [
             {
                 variable    = "HTTP header",
@@ -157,7 +157,7 @@ variable "rewrite_rule_set" {
                 ignore_case = false,
                 negate      = false
             }
-          ],
+          ]/*,
           request_header_configuration  = [
             {
                 header_name  = "X-Forwarded-Proto",

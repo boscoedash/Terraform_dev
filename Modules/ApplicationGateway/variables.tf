@@ -116,13 +116,14 @@ variable "rewrite_rule_set" {
     rewrite_rule = list(object({
       name          = string
       rule_sequence = number
-      /*
+      
       condition     = list(object({
             variable    = string
             pattern     = string
             ignore_case = bool
             negate      = bool
         }))
+        /*
       request_header_configuration  = list(object({
             header_name  = string
             header_value = string
