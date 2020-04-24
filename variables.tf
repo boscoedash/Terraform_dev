@@ -152,9 +152,9 @@ variable "rewrite_rule_set" {
           rule_sequence = 100,
           condition     = [
             {
-                variable    = "HTTP header",
-                pattern     = "http://contoso-1.com",
-                ignore_case = false,
+                variable    = "HTTP header"
+                pattern     = "http://contoso-1.com"
+                ignore_case = false
                 negate      = false
             }
           ]/*,

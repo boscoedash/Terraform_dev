@@ -117,7 +117,7 @@ variable "rewrite_rule_set" {
       name          = string
       rule_sequence = number
       
-      condition     = list(object({
+      condition     = list(map({
             variable    = string
             pattern     = string
             ignore_case = bool
