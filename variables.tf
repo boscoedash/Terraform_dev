@@ -44,8 +44,8 @@ variable "backend_address_pools" {
   default     = [
       {
         name         = "be-pool-01"
-        ip_addresses = []
-        fqdns        = []
+        ip_addresses = ["127.0.0.1"]
+        fqdns        = ["vm@contoso.com"]
       }
   ]
 }
