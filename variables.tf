@@ -134,7 +134,7 @@ variable "redirect_configurations" {
         {
             name                   = "Redirect Configuration 1"
             redirect_type          = "Permanent" 
-            target_listener_name   = ""
+            target_listener_name   = "http"
             target_url             = "http://contoso.com"
             include_path           = true
             include_query_string   = true
