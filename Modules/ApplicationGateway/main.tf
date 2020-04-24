@@ -109,7 +109,7 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
           rule_sequence = rewrite_rule.value.rule_sequence
 
           dynamic "condition" {
-            for_each = rewrite_rule_set.value.rewrite_rule.condition
+            for_each = rewrite_rule_set.value.rewrite_rule.value.condition
             content {
               variable    = condition.value.variable
               pattern     = condition.value.pattern
@@ -119,7 +119,7 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
           }
           
           dynamic "request_header_configuration" {
-            for_each = rewrite_rule_set.value.rewrite_rule.request_header_configuration
+            for_each = rewrite_rule_set.value.rewrite_rule.value.request_header_configuration
             content {
               header_name  = request_header_configuration.value.header_name
               header_value = request_header_configuration.value.header_value
@@ -127,7 +127,7 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
           }
 
           dynamic "response_header_configuration" {
-            for_each = rewrite_rule_set.value.rewrite_rule.response_header_configuration
+            for_each = rewrite_rule_set.value.rewrite_rule.value.response_header_configuration
             content {
               header_name  = response_header_configuration.value.header_name
               header_value = response_header_configuration.value.header_value
