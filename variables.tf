@@ -86,7 +86,7 @@ variable "request_routing_rules" {
         backend_address_pool_name  = "be-pool-01"
         backend_http_settings_name = "HTTP Settings 1"
         is_path_based              = true
-        #url_path_map_name          = "Path map 1"
+        url_path_map_name          = "Path map 1"
       }
   ]
 }
@@ -109,7 +109,7 @@ variable "probes" {
       }
     ]
 }
-/*
+
 variable "url_path_map" {
   description = "URL path maps associated to path-based rules."
   default     = [
@@ -149,7 +149,7 @@ variable "rewrite_rule_set" {
       rewrite_rule = [
         {
           name          = "rule1",
-          rule_sequence = 100,
+          rule_sequence = 100/*,
           condition     = [
             {
                 variable    = "HTTP header",
@@ -170,9 +170,9 @@ variable "rewrite_rule_set" {
                 header_value = "http://contoso.com"
             }
           ]
+          */
         }
       ]
     }
   ]
 }
-*/

@@ -55,7 +55,7 @@ variable "request_routing_rules" {
     backend_address_pool_name  = string
     backend_http_settings_name = string
     is_path_based              = bool
-    #url_path_map_name          = string
+    url_path_map_name          = string
   }))
 }
 variable "is_public_ip_allocation_static" {
@@ -80,7 +80,7 @@ variable "probes" {
     pick_host_name_from_backend_http_settings = bool
   }))
 }
-/*
+
 variable "url_path_map" {
   description                        = "URL path maps associated to path-based rules."
   default                            = []
@@ -108,6 +108,7 @@ variable "redirect_configurations" {
     include_query_string   = string
   }))
 }
+
 variable "rewrite_rule_set" {
   description = "Header Rewrite"
   type = list(object({
@@ -115,6 +116,7 @@ variable "rewrite_rule_set" {
     rewrite_rule = list(object({
       name          = string
       rule_sequence = number
+      /*
       condition     = list(object({
             variable    = string
             pattern     = string
@@ -129,7 +131,7 @@ variable "rewrite_rule_set" {
             header_name  = string
             header_value = string
         }))
+        */
     }))
   }))
 }
-*/

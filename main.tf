@@ -48,9 +48,7 @@ module "ApplicationGateway" {
   http_listeners               = var.http_listeners
   request_routing_rules        = var.request_routing_rules
   probes                       = var.probes
-  /*
   url_path_map                 = var.url_path_map
   redirect_configurations      = var.redirect_configurations
   rewrite_rule_set             = var.rewrite_rule_set
-  */
 }
