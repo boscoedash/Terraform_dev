@@ -34,7 +34,7 @@ variable "public_ip_allocation_method" {
   description = "Is the public IP address static?"
   default     = "Dynamic"
 }
-/*
+
 variable "Gateway_IP_Config" {
   default     = ""
   description = "Name of the App Gateway PIP."
@@ -86,7 +86,7 @@ variable "request_routing_rules" {
         backend_address_pool_name  = "be-pool-01"
         backend_http_settings_name = "HTTP Settings 1"
         is_path_based              = true
-        url_path_map_name          = "Path map 1"
+        #url_path_map_name          = "Path map 1"
       }
   ]
 }
@@ -109,6 +109,7 @@ variable "probes" {
       }
     ]
 }
+/*
 variable "url_path_map" {
   description = "URL path maps associated to path-based rules."
   default     = [

@@ -55,7 +55,7 @@ variable "request_routing_rules" {
     backend_address_pool_name  = string
     backend_http_settings_name = string
     is_path_based              = bool
-    url_path_map_name          = string
+    #url_path_map_name          = string
   }))
 }
 variable "is_public_ip_allocation_static" {
