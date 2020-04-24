@@ -80,6 +80,7 @@ variable "probes" {
     pick_host_name_from_backend_http_settings = bool
   }))
 }
+/*
 variable "url_path_map" {
   description                        = "URL path maps associated to path-based rules."
   default                            = []
@@ -95,6 +96,7 @@ variable "url_path_map" {
     }))
   }))
 }
+
 variable "redirect_configurations" {
   description = "Path Based Redirect Configurations."
   type = list(object({
@@ -130,3 +132,4 @@ variable "rewrite_rule_set" {
     }))
   }))
 }
+*/

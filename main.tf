@@ -31,7 +31,7 @@ module "PublicIP" {
   resource_group_location        = var.resource_group_location
   public_ip_allocation_method    = var.public_ip_allocation_method
 }
-/*
+
 module "ApplicationGateway" {
   source                       = "./Modules/ApplicationGateway"
   application_gateway_name     = var.application_gateway_name
@@ -48,8 +48,9 @@ module "ApplicationGateway" {
   http_listeners               = var.http_listeners
   request_routing_rules        = var.request_routing_rules
   probes                       = var.probes
+  /*
   url_path_map                 = var.url_path_map
   redirect_configurations      = var.redirect_configurations
   rewrite_rule_set             = var.rewrite_rule_set
+  */
 }
-*/

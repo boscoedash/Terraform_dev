@@ -84,7 +84,7 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
       protocol                       = http_listener.value.is_https ? "Https" : "Http"
     }
   }
-
+/*
  dynamic "redirect_configuration" {
     for_each = var.redirect_configurations
     content {
@@ -151,7 +151,7 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
       }
     }
   }
-
+*/
    dynamic "request_routing_rule" {
     for_each = var.request_routing_rules
     content {
@@ -160,7 +160,7 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
       http_listener_name         = request_routing_rule.value.http_listener_name
       backend_address_pool_name  = request_routing_rule.value.backend_address_pool_name
       backend_http_settings_name = request_routing_rule.value.backend_http_settings_name
-      url_path_map_name          = request_routing_rule.value.url_path_map_name
+      #url_path_map_name          = request_routing_rule.value.url_path_map_name
     }
   }
 }
