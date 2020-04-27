@@ -116,7 +116,7 @@ variable "rewrite_rule_set" {
     rewrite_rule = list(object({
       name          = string
       rule_sequence = number
-      
+      /*
       condition     = list(object({
             variable    = string
             pattern     = string
