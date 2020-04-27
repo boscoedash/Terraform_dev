@@ -1,137 +1,190 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@boscoedash 
+qhrtech
+/
+terraform-modules
+Private
+6
+00
+ Code Pull requests 0 Actions Security 0 Insights
+terraform-modules/catalog/resources/networking/app-gateway/variables.tf
+@markmqhr markmqhr keyvault managed identity
+e58d144 9 days ago
+ 171 lines (139 sloc)  3.99 KB
+  
 variable "resource_group_name" {
-  description = "Name of the resource group to place App Gateway in."
+  type        = string
+  description = "The name of the resource group to create the storage account under."
 }
-variable "resource_group_location" {
-  description = "Location of the resource group to place App Gateway in."
+
+variable "tags" {
+  type        = map(string)
+  description = "The tags to assign to the resources.  Defaults to the tags of the containing resource group."
+  default     = null
 }
-variable "application_gateway_name" {
-  description = "Name of App Gateway"
+
+variable "description" {
+  type        = string
+  description = "The description of the resource for naming."
 }
-variable "virtual_network_name" {
-  description = "Name of App Gateway Virtual Network"
+
+variable "counter" {
+  type    = number
+  default = 1
 }
-variable "subnet_id" {
-  description = "Subnet ID"
-}
-variable "public_ip_address_id" {
-  description = "Public IP Address ID"
-}
-variable "Gateway_IP_Config" {
-  description = "Name of the App Gateway PIP."
-}
-variable "backend_address_pools" {
-  description = "List of backend address pools."
-  type = list(object({
-    name         = string
-    ip_addresses = list(string)
-    fqdns        = list(string)
-  }))
-}
-variable "backend_http_settings" {
-  description = "List of backend HTTP settings."
-  type = list(object({
-    name                                = string
-    has_cookie_based_affinity           = bool
-    path                                = string
-    port                                = number
-    is_https                            = bool
-    request_timeout                     = number
-    probe_name                          = string
-    pick_host_name_from_backend_address = bool
-  }))
-}
-variable "http_listeners" {
-  description = "List of HTTP listeners."
-  type = list(object({
-    name     = string
-    is_https = bool
-  }))
-}
-variable "request_routing_rules" {
-  description = "Request routing rules to be used for listeners."
-  type = list(object({
-    name                       = string
-    http_listener_name         = string
-    backend_address_pool_name  = string
-    backend_http_settings_name = string
-    is_path_based              = bool
-    url_path_map_name          = string
-  }))
-}
-variable "is_public_ip_allocation_static" {
-  description = "Is the public IP address of the App Gateway static?"
-  default     = false
-}
-variable "application_gateway_sku_name" {
-  description = "Name of App Gateway SKU."
+
+variable "sku_name" {
+  type        = string
+  description = "The Name of the SKU to use for this Application Gateway."
   default     = "Standard_v2"
 }
-variable "application_gateway_sku_tier" {
-  description = "Tier of App Gateway SKU."
+
+variable "sku_tier" {
+  type        = string
+  description = "The Tier of the SKU to use for this Application Gateway. "
   default     = "Standard_v2"
 }
-variable "probes" {
-  description = "Health probes used to test backend health."
-  default     = []
-  type = list(object({
-    name                                      = string
-    path                                      = string
-    is_https                                  = bool
-    pick_host_name_from_backend_http_settings = bool
-  }))
+
+variable "sku_capacity" {
+  type        = number
+  description = "The Capacity of the SKU to use for this Application Gateway."
+  default     = null
 }
 
-variable "url_path_map" {
-  description                        = "URL path maps associated to path-based rules."
-  default                            = []
-  type = list(object({
-    name                          = string
-    path_rules = list(object({
-      name                        = string
-      backend_address_pool_name   = string
-      backend_http_settings_name  = string
-      redirect_configuration_name = string
-      rewrite_rule_set_name       = string
-      paths                       = list(string)
-    }))
-  }))
+variable "autoscale_min_capacity" {
+  type        = number
+  description = "Minimum capacity for autoscaling. Accepted values are in the range 0 to 100."
+  default     = 1
 }
 
-variable "redirect_configurations" {
-  description = "Path Based Redirect Configurations."
-  type = list(object({
-    name                   = string
-    redirect_type          = string
-    target_listener_name   = string
-    target_url             = string
-    include_path           = string
-    include_query_string   = string
-  }))
+variable "autoscale_max_capacity" {
+  type        = number
+  description = "Maximum capacity for autoscaling. Accepted values are in the range 2 to 125."
+  default     = 5
 }
 
-variable "rewrite_rule_set" {
-  description = "Header Rewrite"
-  type = list(object({
-    name         = string
-    rewrite_rule = list(object({
-      name          = string
-      rule_sequence = number
-      /*
-      condition     = list(object({
-            variable    = string
-            pattern     = string
-            ignore_case = bool
-            negate      = bool
-        }))
-      request_header_configuration  = list(object({
-            header_name  = string
-            header_value = string
-        }))
-      response_header_configuration = list(object({
-            header_name  = string
-            header_value = string
-        }))
-        */
-    }))
-  }))
+variable "ssl_policy_type" {
+  type        = string
+  description = "The Type of the Policy. Possible values are Predefined and Custom."
+  default     = "Custom"
+}
+
+variable "ssl_min_protocol_version" {
+  type        = string
+  description = "The minimal TLS version."
+  default     = "TLSv1_2"
+}
+
+variable "ssl_cipher_suites_max_v2" {
+  type        = list
+  description = "A List of accepted cipher suites."
+  default = [
+    "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+    #"TLS_RSA_WITH_AES_256_CBC_SHA256"
+  ]
+}
+
+variable "enable_http2" {
+  type        = bool
+  description = "Is HTTP2 enabled on the application gateway resource?"
+  default     = true
+}
+
+variable "backend_address_pool_map" {
+  type        = map
+  description = "Map of backend pools"
+}
+
+variable "backend_http_settings_map" {
+  type        = map
+  description = "Map of backend http settings"
+}
+
+variable "frontend_ip_config_map" {
+  type        = map
+  description = "Map of frontend IP Configs"
+}
+
+variable "frontend_port_map" {
+  type        = map
+  description = "Map of frontend ports"
+}
+
+variable "gateway_ip_config_map" {
+  type        = map
+  description = "Map of gateway ip configs"
+}
+
+variable "http_listener_map" {
+  type        = map
+  description = "Map of https listeners"
+}
+
+variable "request_routing_rule_map" {
+  type        = map
+  description = "Map of Request Routing Rules"
+}
+
+variable "identity_ids" {
+  type        = list
+  description = "Specifies a list with a single user managed identity id to be assigned to the Application Gateway."
+}
+
+variable "identity_type" {
+  type        = string
+  description = "The Managed Service Identity Type of this Application Gateway."
+  default     = "UserAssigned"
+}
+
+variable "zones" {
+  description = "A collection of availability zones to spread the Application Gateway over."
+  default     = null
+}
+
+variable "authentication_certificate_map" {
+  type        = map
+  description = "Map of Authentication Certificates"
+}
+
+variable "trusted_root_certificate_map" {
+  type        = map
+  description = "Map of Trusted Root Certificates"
+}
+
+variable "ssl_certificate_map" {
+  type        = map
+  description = "Map of ssl certificates"
+}
+
+variable "probe_map" {
+  type        = map
+  description = "Map of probes"
+}
+
+variable "url_path_map_map" {
+  type        = map
+  description = "Map of url path maps"
+}
+
+variable "custom_error_configuration_map" {
+  type        = map
+  description = "Map of GLOBAL custom error configs, these can also be specified at an http listener level."
+}
+
+variable "rewrite_rule_set_map" {
+  type        = map
+  description = "Map rewrite rule sets"
+}
+
+variable "redirect_configuration_name_map" {
+  type        = map
+  description = "Map of redirect configurations"
 }
