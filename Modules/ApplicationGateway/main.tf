@@ -1,24 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@boscoedash 
-qhrtech
-/
-terraform-modules
-Private
-6
-00
- Code Pull requests 0 Actions Security 0 Insights
-terraform-modules/catalog/resources/networking/app-gateway/main.tf
-@markmqhr markmqhr cleanup app gateway
-7b2d89d 4 days ago
- 346 lines (283 sloc)  12.9 KB
-  
 module "naming" {
   source      = "../../../naming/standard-name"
   counter     = var.counter

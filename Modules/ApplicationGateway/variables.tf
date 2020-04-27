@@ -1,24 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@boscoedash 
-qhrtech
-/
-terraform-modules
-Private
-6
-00
- Code Pull requests 0 Actions Security 0 Insights
-terraform-modules/catalog/resources/networking/app-gateway/variables.tf
-@markmqhr markmqhr keyvault managed identity
-e58d144 9 days ago
- 171 lines (139 sloc)  3.99 KB
-  
 variable "resource_group_name" {
   type        = string
   description = "The name of the resource group to create the storage account under."
