@@ -106,7 +106,7 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
         content {
           name          = rewrite_rule.value.name
           rule_sequence = rewrite_rule.value.rule_sequence
-          
+          /*
           dynamic "condition" {
             for_each = rewrite_rule_set.value.rewrite_rule.value.condition
             content {
@@ -116,7 +116,6 @@ resource "azurerm_application_gateway" "ApplicationGateway" {
               negate      = condition.value.negate
             }
           }
-          /*
           dynamic "request_header_configuration" {
             for_each = rewrite_rule_set.value.rewrite_rule.value.request_header_configuration
             content {
