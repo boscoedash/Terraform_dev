@@ -14,6 +14,11 @@ variable "description" {
   description = "The description of the resource for naming."
 }
 
+variable "name" {
+  type        = string
+  description = "The name of the application gateway."
+}
+
 variable "counter" {
   type    = number
   default = 1

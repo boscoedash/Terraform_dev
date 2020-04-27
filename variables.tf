@@ -38,6 +38,10 @@ variable "application_gateway_description" {
   default     = "application-gateway"
   description = "Name of the App Gateway."
 }
+variable "application_gateway_name" {
+  default     = "application-gateway"
+  description = "Name of the App Gateway."
+}
 variable "application_gateway_frontend_ip_config_map" {
   default     = ""
   description = "Name of the App Gateway PIP."

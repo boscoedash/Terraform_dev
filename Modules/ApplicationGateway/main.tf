@@ -18,7 +18,7 @@ locals {
 }
 
 resource "azurerm_application_gateway" "app_gateway" {
-  name                = module.naming.name
+  name                = var.application_gateway_name
   resource_group_name = var.resource_group_name
   location            = local.location
   tags                = local.tags

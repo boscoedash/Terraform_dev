@@ -33,10 +33,11 @@ module "PublicIP" {
 }
 
 module "ApplicationGateway" {
-  source                       = "./Modules/ApplicationGateway"
+  source                           = "./Modules/ApplicationGateway"
   resource_group_name             = var.resource_group_name
   tags                            = var.application_gateway_tags
   description                     = var.application_gateway_description
+  name                            = var.application_gateway_name
   counter                         = var.counter
   sku_name                        = var.application_gateway_sku_name
   sku_tier                        = var.application_gateway_sku_tier
