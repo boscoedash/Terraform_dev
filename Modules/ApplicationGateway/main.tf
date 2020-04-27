@@ -1,11 +1,3 @@
-module "naming" {
-  source      = "../../../naming/standard-name"
-  counter     = var.counter
-  description = var.description
-  location    = local.location
-  type        = "agw"
-}
-
 locals {
   authentication_certificate_map  = var.authentication_certificate_map == null ? {} : var.authentication_certificate_map
   trusted_root_certificate_map    = var.trusted_root_certificate_map == null ? {} : var.trusted_root_certificate_map
