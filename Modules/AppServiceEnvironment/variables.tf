@@ -23,7 +23,7 @@ variable "pricing_tier" {
   description = "The pricing tier to use for the plan."
 }
 
-variable "pricing_tier" {
+variable "front_end_scale_factor" {
   type        = number
   description = "The ASE scale factor."
 }
