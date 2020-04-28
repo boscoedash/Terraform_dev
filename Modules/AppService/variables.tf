@@ -13,14 +13,14 @@ variable "resource_group_name" {
   description = "The name of the resource group in which to create the App Service"
 }
 
+variable "tags" {
+  type        = map
+  description = "A key-value pair of tags."
+}
+
 variable "app_service_plan_id" {
   type        = string
   description = "The ID of the App Service Plan within which to create this App Service."
-}
-
-variable "app_settings" {
-  type        = map
-  description = "A key-value pair of App Settings."
 }
 
 variable "client_affinity_enabled" {
