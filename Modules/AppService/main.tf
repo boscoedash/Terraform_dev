@@ -95,7 +95,6 @@ resource "azurerm_app_service" "app_service" {
 
     http_logs {
       azure_blob_storage {
-        level             = lookup(local.logs_map.value.application_logs_map.value.azure_blob_storage.value, "level", "Off")
         sas_url           = lookup(local.logs_map.value.application_logs_map.value.azure_blob_storage.value, "sas_url")
         retention_in_days = lookup(local.logs_map.value.application_logs_map.value.azure_blob_storage.value, "retention_in_days", 30)
       }
