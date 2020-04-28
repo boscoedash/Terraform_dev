@@ -38,7 +38,7 @@ variable "gateway_ip_configuration_map" {
   default     = [
     {
       name      = "gw_ip_config_01"
-      subnet_id = lookup(gateway_ip_configuration.value, "subnet_id")
+      subnet_id = "__SubnetID__"
     }
   ]
 }
