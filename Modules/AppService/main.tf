@@ -37,15 +37,15 @@ resource "azurerm_app_service" "app_service" {
   tags                    = local.tags
 
   auth_settings {
-    enabled                        = local.auth_settings_map_enabled
-    additional_login_params        = local.auth_settings_map_additional_login_params
-    allowed_external_redirect_urls = local.auth_settings_map_allowed_external_redirect_urls
-    default_provider               = local.auth_settings_map_default_provider
-    runtime_version                = local.auth_settings_map_runtime_version
-    token_refresh_extension_hours  = local.auth_settings_map_token_refresh_extension_hours
-    token_store_enabled            = local.auth_settings_map_token_store_enabled
-    unauthenticated_client_action  = local.auth_settings_map_unauthenticated_client_action
-    issuer                         = local.auth_settings_map_isuer
+    enabled                        = lookup(local.auth_settings_map, "enabled")
+    additional_login_params        = lookup(local.auth_settings_map, "additional_login_params")
+    allowed_external_redirect_urls = lookup(local.auth_settings_map, "allowed_external_redirect_urls")
+    default_provider               = lookup(local.auth_settings_map, "default_provider")
+    runtime_version                = lookup(local.auth_settings_map, "runtime_version")
+    token_refresh_extension_hours  = lookup(local.auth_settings_map, "token_refresh_extension_hours")
+    token_store_enabled            = lookup(local.auth_settings_map, "token_store_enabled")
+    unauthenticated_client_action  = lookup(local.auth_settings_map, "unauthenticated_client_action")
+    issuer                         = lookup(local.auth_settings_map, "isuer")
 
     active_directory {
       client_id         = local.active_directory_map_client_id
