@@ -44,6 +44,7 @@ module "ApplicationGateway" {
   sku_capacity                    = var.application_gateway_sku_capacity
   autoscale_min_capacity          = var.application_gateway_autoscale_min_capacity
   autoscale_max_capacity          = var.application_gateway_autoscale_max_capacity
+  gateway_ip_config_map           = var.application_gateway_gateway_ip_config_map
   ssl_policy_type                 = var.application_gateway_ssl_policy_type
   ssl_min_protocol_version        = var.application_gateway_ssl_min_protocol_version
   ssl_cipher_suites_max_v2        = var.application_gateway_ssl_cipher_suites_max_v2

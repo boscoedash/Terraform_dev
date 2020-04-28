@@ -34,6 +34,14 @@ variable "application_gateway_description" {
   default     = "application-gateway"
   description = "Name of the App Gateway."
 }
+variable "gateway_ip_configuration_map" {
+  default     = [
+    {
+      name      = "gw_ip_config_01"
+      subnet_id = lookup(gateway_ip_configuration.value, "subnet_id")
+    }
+  ]
+}
 variable "application_gateway_name" {
   default     = "application-gateway"
   description = "Name of the App Gateway."
