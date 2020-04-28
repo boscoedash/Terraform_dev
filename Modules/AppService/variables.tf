@@ -48,7 +48,7 @@ variable "logs_map" {
   description = "Map of log data"
 }
 
-variable "site_config__map" {
+variable "site_config_map" {
   type        = map
   description = "Map of site config data"
 }
