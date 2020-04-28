@@ -1,0 +1,29 @@
+variable "location" {
+  type        = string
+  description = "The ASE location."
+}
+
+variable "description" {
+  type        = string
+  description = "The description of the resource for naming."
+}
+
+variable "counter" {
+  type    = number
+  default = 1
+}
+
+variable "subnet_id" {
+  type        = string
+  description = "The kind of App Service plan to create.  i.e. Windows, Linux, FunctionAll."
+}
+
+variable "pricing_tier" {
+  type        = string
+  description = "The pricing tier to use for the plan."
+}
+
+variable "pricing_tier" {
+  type        = number
+  description = "The ASE scale factor."
+}
