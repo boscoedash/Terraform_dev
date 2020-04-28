@@ -88,6 +88,11 @@ variable "schedule_map" {
   description = "Map of backup schedule data"
 }
 
+variable "connection_string_map" {
+  type        = map
+  description = "Map of connection string data"
+}
+
 variable "ip_restriction_map" {
   type        = map
   description = "Map of ip restriction data"

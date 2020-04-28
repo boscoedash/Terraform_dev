@@ -21,6 +21,7 @@ locals {
   storage_account_map             = var.storage_account_map  == null ? {} : var.storage_account_map
   backup_map                      = var.backup_map  == null ? {} : var.backup_map
   schedule_map                    = var.schedule_map  == null ? {} : var.schedule_map
+  connection_string_map           = var.connection_string_map  == null ? {} : var.connection_string_map
   ip_restriction_map              = var.ip_restriction_map == null ? {} : var.ip_restriction_map
 }
 
@@ -48,25 +49,25 @@ resource "azurerm_app_service" "app_service" {
     issuer                         = lookup(local.auth_settings_map, "isuer")
 
     active_directory {
-      client_id         = local.active_directory_map_client_id
-      client_secret     = local.active_directory_map_client_secret
-      allowed_audiences = local.active_directory_mapclient_id
+      client_id         = lookup(local.active_directory_map, "client_id")
+      client_secret     = lookup(local.active_directory_map, "client_secret")
+      allowed_audiences = lookup(local.active_directory_map, "client_id")
     }
   }
 
   storage_account {
-    name         = lookup(local.storage_account, "name")
-    type         = lookup(local.storage_account, "type")
-    account_name = lookup(local.storage_account, "account_name")
-    share_name   = lookup(local.storage_account, "share_name")
-    access_key   = lookup(local.storage_account, "access_key")
-    mount_path   = lookup(local.storage_account, "mount_path", null)
+    name         = lookup(local.storage_account_map, "name")
+    type         = lookup(local.storage_account_map, "type")
+    account_name = lookup(local.storage_account_map, "account_name")
+    share_name   = lookup(local.storage_account_map, "share_name")
+    access_key   = lookup(local.storage_account_map, "access_key")
+    mount_path   = lookup(local.storage_account_map, "mount_path", null)
   }
 
   backup {
-    name                = local.backup_map_name
-    enabled             = local.backup_map_enabled
-    storage_account_url = local.backup_map_storage_account_url == "" ? {} : local.backup_map_storage_account_url
+    name                = lookup(local.backup_map, "name")
+    enabled             = lookup(local.backup_map, "enabled")
+    storage_account_url = lookup(local.backup_map, "storage_account_url", null) 
 
     schedule {
       frequency_interval       = lookup(local.schedule_map.value, "frequency_interval")
@@ -78,9 +79,9 @@ resource "azurerm_app_service" "app_service" {
   }
 
   connection_string {
-    name  = var.connection_string_name
-    type  = var.connection_string_type
-    value = var.connection_string_value
+    name  = lookup(local.connection_string_map, "name")
+    type  = lookup(local.connection_string, "type")
+    value = lookup(local.connection_string_map, "value")
   }
 
   logs {
