@@ -48,6 +48,11 @@ variable "logs_map" {
   description = "Map of log data"
 }
 
+variable "site_config__map" {
+  type        = map
+  description = "Map of site config data"
+}
+
 variable "site_config_cors_map" {
   type        = map
   description = "Map of cors data"

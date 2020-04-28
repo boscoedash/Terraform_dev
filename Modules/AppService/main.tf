@@ -80,7 +80,7 @@ resource "azurerm_app_service" "app_service" {
 
   connection_string {
     name  = lookup(local.connection_string_map, "name")
-    type  = lookup(local.connection_string, "type")
+    type  = lookup(local.connection_string_map, "type")
     value = lookup(local.connection_string_map, "value")
   }
 
@@ -108,26 +108,26 @@ resource "azurerm_app_service" "app_service" {
   }
 
   site_config {
-    always_on                 = lookup(var.site_config.value, "site_config_always_on", false)
-    app_command_line          = lookup(var.site_config.value, "site_config_app_command_line")
-    default_documents         = lookup(var.site_config.value, "site_config_default_documents")
-    dotnet_framework_version  = lookup(var.site_config.value, "site_config_dotnet_framework_version", "v4.0")
-    ftps_state                = lookup(var.site_config.value, "site_config_ftps_state")
-    http2_enabled             = lookup(var.site_config.value, "site_config_http2_enabled", false)
-    java_version              = lookup(var.site_config.value, "site_config_java_version")
-    java_container            = lookup(var.site_config.value, "site_config_java_container")
-    java_container_version    = lookup(var.site_config.value, "site_config_java_container_version")
-    local_mysql_enabled       = lookup(var.site_config.value, "site_config_local_mysql_enabled")
-    linux_fx_verison          = lookup(var.site_config.value, "site_config_linux_fx_verison")
-    windows_fx_verison        = lookup(var.site_config.value, "site_config_windows_fx_verison")
-    managed_pipeline_version  = lookup(var.site_config.value, "site_config_windows_fx_verison")
-    min_tls_version           = lookup(var.site_config.value, "site_config_windows_fx_verison")
-    php_version               = lookup(var.site_config.value, "site_config_windows_fx_verison")
-    python_verison            = lookup(var.site_config.value, "site_config_windows_fx_verison")
-    remote_debugging_version  = lookup(var.site_config.value, "site_config_windows_fx_verison")
-    scm_type                  = lookup(var.site_config.value, "site_config_windows_fx_verison")
-    use_32_bit_worker_process = lookup(var.site_config.value, "site_config_windows_fx_verison")
-    websockets_enabled        = lookup(var.site_config.value, "site_config_windows_fx_verison")
+    always_on                 = lookup(var.site_config_map.value, "always_on", false)
+    app_command_line          = lookup(var.site_config_map.value, "sapp_command_line")
+    default_documents         = lookup(var.site_config_map.value, "default_documents")
+    dotnet_framework_version  = lookup(var.site_config_map.value, "dotnet_framework_version", "v4.0")
+    ftps_state                = lookup(var.site_config_map.value, "ftps_state")
+    http2_enabled             = lookup(var.site_config_map.value, "http2_enabled", false)
+    java_version              = lookup(var.site_config_map.value, "java_version")
+    java_container            = lookup(var.site_config_map.value, "ava_container")
+    java_container_version    = lookup(var.site_config_map.value, "java_container_version")
+    local_mysql_enabled       = lookup(var.site_config_map.value, "ocal_mysql_enabled")
+    linux_fx_verison          = lookup(var.site_config_map.value, "linux_fx_verison")
+    windows_fx_verison        = lookup(var.site_config_map.value, "windows_fx_verison")
+    managed_pipeline_version  = lookup(var.site_config_map.value, "managed_pipeline_version")
+    min_tls_version           = lookup(var.site_config_map.value, "min_tls_version ")
+    php_version               = lookup(var.site_config_map.value, "php_version")
+    python_verison            = lookup(var.site_config_map.value, "python_verison")
+    remote_debugging_version  = lookup(var.site_config_map.value, "remote_debugging_version")
+    scm_type                  = lookup(var.site_config_map.value, "scm_type")
+    use_32_bit_worker_process = lookup(var.site_config_map.value, "use_32_bit_worker_process")
+    websockets_enabled        = lookup(var.site_config_map.value, "websockets_enabled")
 
     dynamic "ip_restriction" {
       for_each = local.ip_restriction_map
