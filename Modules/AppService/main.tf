@@ -30,7 +30,7 @@ resource "azurerm_app_service" "app_service" {
   location                = local.location
   resource_group_name     = var.resource_group_name
   app_service_plan_id     = var.app_service_plan_id
-  app_settings_map        = local.app_settings_map
+  app_settings        = local.app_settings_map
   client_affinity_enabled = var.client_affinity_enabled
   client_cert_enabled     = var.client_cert_enabled
   enabled                 = var.enabled
@@ -85,7 +85,7 @@ resource "azurerm_app_service" "app_service" {
   }
 
   logs {
-    application_logs_map {
+    application_logs {
       azure_blob_storage {
         level             = lookup(local.logs_map.value.application_logs_map.value.azure_blob_storage.value, "level", "Off")
         sas_url           = lookup(local.logs_map.value.application_logs_map.value.azure_blob_storage.value, "sas_url")
@@ -119,11 +119,11 @@ resource "azurerm_app_service" "app_service" {
     java_container_version    = lookup(var.site_config_map.value, "java_container_version")
     local_mysql_enabled       = lookup(var.site_config_map.value, "ocal_mysql_enabled")
     linux_fx_verison          = lookup(var.site_config_map.value, "linux_fx_verison")
-    windows_fx_verison        = lookup(var.site_config_map.value, "windows_fx_verison")
-    managed_pipeline_version  = lookup(var.site_config_map.value, "managed_pipeline_version")
+    windows_fx_verison        = lookup(var.site_config_map.value, "windows_fx_version")
+    managed_pipeline_mode     = lookup(var.site_config_map.value, "managed_pipeline_version")
     min_tls_version           = lookup(var.site_config_map.value, "min_tls_version ")
     php_version               = lookup(var.site_config_map.value, "php_version")
-    python_verison            = lookup(var.site_config_map.value, "python_verison")
+    python_verison            = lookup(var.site_config_map.value, "python_version")
     remote_debugging_version  = lookup(var.site_config_map.value, "remote_debugging_version")
     scm_type                  = lookup(var.site_config_map.value, "scm_type")
     use_32_bit_worker_process = lookup(var.site_config_map.value, "use_32_bit_worker_process")
