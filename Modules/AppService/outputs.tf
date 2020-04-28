@@ -1,3 +1,3 @@
 output "id" {
-  value = azurerm_app_service_environment.app_service_environment.id
+  value = azurerm_app_service.app_service.id
 }

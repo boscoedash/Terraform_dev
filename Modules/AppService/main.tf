@@ -1,3 +1,7 @@
+provider "azurerm" {
+  features {}
+}
+
 module "naming" {
   source      = "../naming/standard-name"
   counter     = var.counter
