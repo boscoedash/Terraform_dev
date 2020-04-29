@@ -13,6 +13,11 @@ variable "counter" {
   default = 1
 }
 
+variable "resource_group_name" {
+  type        = string
+  description = "The name of the resource group in which to create the App Service"
+}
+
 variable "subnet_id" {
   type        = string
   description = "The kind of App Service plan to create.  i.e. Windows, Linux, FunctionAll."
