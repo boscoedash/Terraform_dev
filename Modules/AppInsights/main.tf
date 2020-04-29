@@ -1,13 +1,9 @@
-provider "azurerm" {
-  features {}
-}
-
 module "naming" {
-  source      = "../naming/standard-name"
+  source      = "../../../naming/standard-name"
   counter     = var.counter
   description = var.description
   location    = local.location
-  type        = "asp"
+  type        = "ain"
 }
 
 resource "azurerm_application_insights" "application_insights" {

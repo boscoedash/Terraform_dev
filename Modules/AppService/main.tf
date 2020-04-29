@@ -1,9 +1,5 @@
-provider "azurerm" {
-  features {}
-}
-
 module "naming" {
-  source      = "../naming/standard-name"
+  source      = "../../../naming/standard-name"
   counter     = var.counter
   description = var.description
   location    = local.location
@@ -114,9 +110,9 @@ resource "azurerm_app_service" "app_service" {
     ftps_state                = lookup(var.site_config_map.value, "ftps_state")
     http2_enabled             = lookup(var.site_config_map.value, "http2_enabled", false)
     java_version              = lookup(var.site_config_map.value, "java_version")
-    java_container            = lookup(var.site_config_map.value, "ava_container")
+    java_container            = lookup(var.site_config_map.value, "java_container")
     java_container_version    = lookup(var.site_config_map.value, "java_container_version")
-    local_mysql_enabled       = lookup(var.site_config_map.value, "ocal_mysql_enabled")
+    local_mysql_enabled       = lookup(var.site_config_map.value, "local_mysql_enabled")
     linux_fx_version          = lookup(var.site_config_map.value, "linux_fx_version")
     windows_fx_version        = lookup(var.site_config_map.value, "windows_fx_version")
     managed_pipeline_mode     = lookup(var.site_config_map.value, "managed_pipeline_version")
