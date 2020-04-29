@@ -4,5 +4,6 @@ data "azurerm_resource_group" "rg" {
 }
 
 locals {
+  tags     = (var.tags == null ? data.azurerm_resource_group.rg.tags : var.tags)
   location = data.azurerm_resource_group.rg.location
 }
