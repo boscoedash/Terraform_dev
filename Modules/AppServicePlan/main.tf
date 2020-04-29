@@ -1,3 +1,7 @@
+provider "azurerm" {
+  features {}
+}
+
 module "naming" {
   source      = "../../../naming/standard-name"
   counter     = var.counter
@@ -22,4 +26,3 @@ resource "azurerm_app_service_plan" "app_service_plan" {
     size     = lookup(var.sku_map, "size")
     capacity = lookup(var.sku_map, "capacity", 2)
   }
-  
