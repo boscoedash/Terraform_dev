@@ -11,7 +11,7 @@ locals {
   logs_map                        = var.logs_map == null ? {} : var.logs_map
   site_config_cors_map            = var.site_config_cors_map == null ? {} : var.site_config_cors_map
   identity_map                    = var.identity_map  == null ? {} : var.identity_map
-  app_settings_map                = var.app_settings_map  == null ? {} : var.app_settings_map
+  app_settings_map                = var.app_settings_map  == null ? {} : var.app_settings_map # "APPINSIGHTS_INSTRUMENTATIONKEY" = "${azurerm_application_insights.example.instrumentation_key} for app insghts"
   auth_settings_map               = var.auth_settings_map  == null ? {} : var.auth_settings_map
   active_directory_map            = var.active_directory_map  == null ? {} : var.active_directory_map
   storage_account_map             = var.storage_account_map  == null ? {} : var.storage_account_map
@@ -26,7 +26,7 @@ resource "azurerm_app_service" "app_service" {
   location                = local.location
   resource_group_name     = var.resource_group_name
   app_service_plan_id     = var.app_service_plan_id
-  app_settings        = local.app_settings_map
+  app_settings            = local.app_settings_map
   client_affinity_enabled = var.client_affinity_enabled
   client_cert_enabled     = var.client_cert_enabled
   enabled                 = var.enabled
