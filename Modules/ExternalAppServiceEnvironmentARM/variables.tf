@@ -38,6 +38,11 @@ variable "existingVirtualNetworkResourceGroup" {
   description = "The name of the virtual network Resource Group"
 }
 
+variable "subnetName" {
+  type        = string
+  description = "The name of the ASE Subnet"
+}
+
 variable "internalLoadBalancingMode" {
   type        = number
   description = "0 = public VIP only, 1 = only ports 80/443 are mapped to ILB VIP, 2 = only FTP ports are mapped to ILB VIP, 3 = both ports 80/443 and FTP ports are mapped to an ILB VIP."
