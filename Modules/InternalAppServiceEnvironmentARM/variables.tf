@@ -20,7 +20,12 @@ variable "template_file" {
 
 variable "parameters_file" {
   type        = string
-  description = "Path to ARM Teplate parameters"
+  description = "Path to ARM template parameters"
+}
+
+variable "parameters" {
+  type        = map
+  description = "Key value pairs of ARM Teplate parameters"
 }
 
 variable "existingVirtualNetworkName" {
