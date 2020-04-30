@@ -8,5 +8,5 @@ resource "azurerm_template_deployment" "template_deployment" {
   deployment_mode     = var.deployment_mode == null ? "Incremental" : var.deployment_mode
   template_body       = file(var.template_file)
   parameters_body     = file(var.parameters_file) == null ? "" : file(var.parameters_file)
-  parameters          = var.parameters == null ? "" : var.parameters
+  parameters          = var.parameters == null ? {} : var.parameters
 }
