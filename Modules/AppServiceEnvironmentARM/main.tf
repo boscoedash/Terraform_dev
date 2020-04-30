@@ -1,12 +1,12 @@
 module "naming" {
-  source      = "../../../naming/standard-name"
+  source      = "../naming/standard-name"
   counter     = var.counter
   description = var.description
   location    = local.location
   type        = "ase"
 }
 
-resource "azurerm_template_deployment" "template_deployment" {
+module "ARMTemplateDeployment" {
   name                = lower(module.naming.name)
   resource_group_name = var.resource_group_name
   deployment_mode     = var.deployment_mode == null ? "Incremental" : var.deployment_mode
