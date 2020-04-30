@@ -16,7 +16,6 @@ module "external_ase_arm_template" {
   resource_group_name = var.resource_group_name
   deployment_mode     = var.deployment_mode == null ? "Incremental" : var.deployment_mode
   template_body       = file(var.template_file)
-  parameters          = var.parameters
   parameters = {
     "aseName"                             = lower(module.naming.name)
     "aseLocation"                         = local.location

@@ -23,11 +23,6 @@ variable "parameters_file" {
   description = "Path to ARM template parameters"
 }
 
-variable "parameters" {
-  type        = map
-  description = "Key value pairs of ARM Teplate parameters"
-}
-
 variable "existingVirtualNetworkName" {
   type        = string
   description = "The name of the virtual network associated with the ASE"
