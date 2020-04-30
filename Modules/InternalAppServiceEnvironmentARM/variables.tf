@@ -23,6 +23,11 @@ variable "parameters_file" {
   description = "Path to ARM template parameters"
 }
 
+variable "deployment_mode" {
+  type        = string
+  description = "Incremental or Complete"
+}
+
 variable "existingVirtualNetworkName" {
   type        = string
   description = "The name of the virtual network associated with the ASE"
@@ -31,6 +36,11 @@ variable "existingVirtualNetworkName" {
 variable "existingVirtualNetworkResourceGroup" {
   type        = string
   description = "The name of the virtual network Resource Group"
+}
+
+variable "subnetName" {
+  type        = string
+  description = "The name of the ASE Subnet"
 }
 
 variable "internalLoadBalancingMode" {

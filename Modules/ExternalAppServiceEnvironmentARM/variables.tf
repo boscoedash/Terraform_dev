@@ -28,6 +28,11 @@ variable "parameters" {
   description = "Key value pairs of ARM Teplate parameters"
 }
 
+variable "deployment_mode" {
+  type        = string
+  description = "Incremental or Complete"
+}
+
 variable "existingVirtualNetworkName" {
   type        = string
   description = "The name of the virtual network associated with the ASE"
