@@ -1,3 +1,7 @@
+provider "azurerm" {
+  features {}
+}
+
 module "naming" {
   source      = "../naming/standard-name"
   counter     = var.counter
@@ -6,7 +10,8 @@ module "naming" {
   type        = "ase"
 }
 
-module "ARMTemplateDeployment" {
+module "external_ase_arm_template" {
+  source      = "../ARMTemplateDeployment"
   name                = lower(module.naming.name)
   resource_group_name = var.resource_group_name
   deployment_mode     = var.deployment_mode == null ? "Incremental" : var.deployment_mode

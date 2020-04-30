@@ -1,3 +1,7 @@
+provider "azurerm" {
+  features {}
+}
+
 resource "azurerm_template_deployment" "template_deployment" {
   name                = var.name
   resource_group_name = var.resource_group_name
