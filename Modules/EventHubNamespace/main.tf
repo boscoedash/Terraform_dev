@@ -12,8 +12,8 @@ module "naming" {
 
 locals {
   network_rulesets_map     = var.network_rulesets_map == null ? {} : var.network_rulesets_map
-  virtual_network_rule_map = var.virtual_network_rule_map == null ? {} : var.virtual_network_rule_map
-  ip_rule_map              = var.ip_rule_map == null ? {} : var.ip_rule_map
+  #virtual_network_rule_map = var.virtual_network_rule_map == null ? {} : var.virtual_network_rule_map
+  #ip_rule_map              = var.ip_rule_map == null ? {} : var.ip_rule_map
 }
 
 resource "azurerm_eventhub_namespace" "event_hub_namespace" {
@@ -30,10 +30,10 @@ resource "azurerm_eventhub_namespace" "event_hub_namespace" {
     for_each = local.network_rulesets_map
 
     content {
-        default_action = lookup(var.network_rulesets.value, "default_action")
+        default_action = lookup(network_rulesets.value, "default_action")
 
         dynamic "virtual_network_rule" {
-            for_each = local.virtual_network_rule_map 
+            for_each = local.network_rulesets_map.value.virtual_network_rule == null ? {} : local.network_rulesets_map.value.virtual_network_rule
             content {
                 subnet_id                                       = lookup(virtual_network_rule.value, "subnet_id")
                 ignore_missing_virtual_network_service_endpoint = lookup(virtual_network_rule.value, "ignore_missing_virtual_network_service_endpoint", false)
@@ -41,7 +41,7 @@ resource "azurerm_eventhub_namespace" "event_hub_namespace" {
         }
 
         dynamic "ip_rule" {
-            for_each = local.ip_rule_map 
+            for_each = local.network_rulesets_map.value.ip_rule == null ? {} : local.network_rulesets_map.value.ip_rule
             content {
                 ip_mask = lookup(ip_rule.value, "ip_mask")
                 action  = lookup(ip_rule_map.value, "action", "Allow")
