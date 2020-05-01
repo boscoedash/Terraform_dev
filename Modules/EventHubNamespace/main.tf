@@ -12,8 +12,8 @@ module "naming" {
 
 locals {
   network_rulesets_map     = var.network_rulesets_map == null ? {} : var.network_rulesets_map
-  virtual_network_rule_map = var.virtual_network_rule_map == null ? {} : var.virtual_network_rule
-  ip_rule_map              = var.ip_rule_map == null ? {} : var.ip_rule
+  virtual_network_rule_map = var.virtual_network_rule_map == null ? {} : var.virtual_network_rule_map
+  ip_rule_map              = var.ip_rule_map == null ? {} : var.ip_rule_map
 }
 
 resource "azurerm_eventhub_namespace" "event_hub_namespace" {
