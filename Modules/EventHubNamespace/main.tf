@@ -27,9 +27,9 @@ resource "azurerm_eventhub_namespace" "event_hub_namespace" {
   
   dynamic "network_rulesets" {
       foreach = var.network_rulesets_map
-      content {
-          default_action = lookup(var.network_rulesets.value, "default_action")
-          
+        content {
+            default_action = lookup(var.network_rulesets.value, "default_action")
+
             dynamic "virtual_network_rule" {
                 foreach = local.virtual_network_rule_map 
                 content {
