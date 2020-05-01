@@ -1,5 +1,9 @@
+provider "azurerm" {
+  features {}
+}
+
 module "naming" {
-  source      = "../../../naming/standard-name"
+  source      = "../naming/standard-name"
   counter     = var.counter
   description = var.description
   location    = local.location
