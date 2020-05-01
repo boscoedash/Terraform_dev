@@ -42,13 +42,3 @@ variable "network_rulesets_map" {
   type        = map
   description = "Map of Network Rule Set Data."
 }
-
-variable "virtual_network_rule_map" {
-  type        = map
-  description = "Map of virtual network rule Data."
-}
-
-variable "ip_rule_map" {
-  type        = map
-  description = "Map of ip rule Data."
-}
