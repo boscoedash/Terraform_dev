@@ -1,6 +1,4 @@
-provider "azurerm" {
-  features {}
-}
+# Did Not include Naming Module because there is no convention for ARM templates
 
 resource "azurerm_template_deployment" "template_deployment" {
   name                = var.name
