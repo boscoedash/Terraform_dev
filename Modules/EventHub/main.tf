@@ -12,7 +12,7 @@ module "naming" {
 
 locals {
   capture_description_map = var.capture_description_map == null ? {} : var.capture_description_map
-  destination_map         = var.capture_destination_map == null ? {} : var.capture_destination_map
+  destination_map         = var.destination_map == null ? {} : var.destination_map
 }
 
 resource "azurerm_eventhub" "event_hub" {
