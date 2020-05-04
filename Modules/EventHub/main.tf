@@ -24,11 +24,11 @@ resource "azurerm_eventhub" "event_hub" {
   message_retention   = var.message_retention
 
   capture_description {
-    enabled             = lookup(local.capture_description, "enabled")
-    encoding            = lookup(local.capture_description, "encoding")
-    interval_in_seconds = lookup(local.capture_description, "interval_in_seconds", 300)
-    size_limit_in_bytes = lookup(local.capture_description, "size_limit_in_bytes", 314572800)
-    skip_empty_archives = lookup(local.capture_description, "skip_empty_archives", false)
+    enabled             = lookup(local.capture_description_map, "enabled")
+    encoding            = lookup(local.capture_description_map, "encoding")
+    interval_in_seconds = lookup(local.capture_description_map, "interval_in_seconds", 300)
+    size_limit_in_bytes = lookup(local.capture_description_map, "size_limit_in_bytes", 314572800)
+    skip_empty_archives = lookup(local.capture_description_map, "skip_empty_archives", false)
 
     destination {
         name                = lookup(local.destination_map, "name")
