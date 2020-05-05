@@ -1,0 +1,47 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+
+    },
+    "variables": {
+        "nestedtemplateUri": "[uri(parameters('_artifactsLocation'), concat('nestedtemplates/vnet.json', parameters('_artifactsLocationSasToken')))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Sql/managedInstances",
+            "apiVersion": "2018-06-01-preview",
+            "name": "[parameters('sqlManagedInstanceName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('sqlManagedInstance-skuName')]",
+                "tier": "[parameters('sqlManagedInstance-skuEdition')]"
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "tags": "[parameters('tags')]",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/BuildMINetworking"
+            ],
+            "properties": {
+                "managedInstanceCreateMode": "string",
+                "administratorLogin": "string",
+                "administratorLoginPassword": "string",
+                "subnetId": "string",
+                "licenseType": "string",
+                "vCores": "integer",
+                "storageSizeInGB": "integer",
+                "collation": "string",
+                "dnsZonePartner": "string",
+                "publicDataEndpointEnabled": "boolean",
+                "sourceManagedInstanceId": "string",
+                "restorePointInTime": "string",
+                "proxyOverride": "string",
+                "timezoneId": "string",
+                "instancePoolId": "string",
+                "minimalTlsVersion": "string"
+            }
+        }
+    ]
+}
