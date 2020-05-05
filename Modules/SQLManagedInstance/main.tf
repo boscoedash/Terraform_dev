@@ -37,7 +37,7 @@ module "sql_managed_instance_arm_template" {
     "publicDataEndpointEnabled"  = var.publicDataEndpointEnabled == null ? false : var.publicDataEndpointEnabled
     "sourceManagedInstanceId"    = var.sourceManagedInstanceId == null ? "" : var.sourceManagedInstanceId
     "restorePointInTime"         = var.restorePointInTime == null ? "" : var.restorePointInTime
-    "proxyOverride"              = var.proxyOverride == null ? 
+    "proxyOverride"              = var.proxyOverride == null ? "" : var.proxyOverride
     "timezoneId"                 = var.timezoneId == null ? "UTC" : var.timezoneId
     "instancePoolId"             = var.instancePoolId == null ? "" : var.instancePoolId
     "minimalTlsVersion"          = var.minimalTlsVersion == null ? "" : var.instancePoolId
