@@ -13,8 +13,8 @@ resource "azurerm_template_deployment" "template_deployment" {
     "location"                   = "SouthCentralUS"
     "tags"                       = ""
     "skuName"                    = "GP_Gen5"
-    "skuSize"                    = ""
-    "skuTier"                    = "GeneralPurpose"
+   // "skuSize"                    = ""
+    //"skuTier"                    = "GeneralPurpose"
     "managedInstanceCreateMode"  = "default"
     "administratorLogin"         = "xadmin"
     "administratorLoginPassword" = "!A@S3d4f5g6h7j8k"
@@ -23,13 +23,13 @@ resource "azurerm_template_deployment" "template_deployment" {
     "vCores"                     = 8
     "storageSizeInGB"            = 256
     "collation"                  = "SQL_Latin1_General_CP1_CI_AS"
-    "dnsZonePartner"             = ""
+    #"dnsZonePartner"             = ""
     "publicDataEndpointEnabled"  = false
-    "sourceManagedInstanceId"    = ""
-    "restorePointInTime"         = ""
-    "proxyOverride"              = "proxy"
-    "timezoneId"                 = "UTC"
-    "instancePoolId"             = ""
-    "minimalTlsVersion"          = ""
+    #"sourceManagedInstanceId"    = ""
+    #"restorePointInTime"         = ""
+    #"proxyOverride"              = "proxy"
+    #"timezoneId"                 = "UTC"
+    #"instancePoolId"             = ""
+   # "minimalTlsVersion"          = ""
   }
 }

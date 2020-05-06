@@ -8,22 +8,17 @@
                 "description": "Name of SQL MI."
             }
         },
+        "tags": {
+            "type": "object",
+            "defaultValue": {},
+            "metadata": {
+                "description": "tags."
+            }
+        },
         "skuName": {
             "type": "string",
             "metadata": {
                 "description": "The name of the SKU, typically, a letter + Number code, e.g. P3."
-            }
-        },
-        "skuTier": {
-            "type": "string",
-            "metadata": {
-                "description": "The tier or edition of the particular SKU, e.g. Basic, Premium."
-            }
-        },
-        "skuSize": {
-            "type": "string",
-            "metadata": {
-                "description": "Size of the particular SKU"
             }
         },
         "location": {
@@ -67,16 +62,13 @@
             ]
         },
         "vCores": {
-            "type": "integer",
+            "type": "int",
             "metadata": {
                 "description": "The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80."
-            },
-            "allowedValues": [
-                8,16, 24, 32, 40, 64, 80
-            ]
+            }
         },
         "storageSizeInGB": {
-            "type": "integer",
+            "type": "int",
             "metadata": {
                 "description": "Storage size in GB. Minimum value: 32. Maximum value: 8192. Increments of 32 GB allowed only."
             }
@@ -85,54 +77,6 @@
             "type": "string",
             "metadata": {
                 "description": "Collation of the managed instance."
-            }
-        },
-        "dnsZonePartner": {
-            "type": "string",
-            "metadata": {
-                "description": "The resource id of another managed instance whose DNS zone this managed instance will share after creation."
-            }
-        },
-        "publicDataEndpointEnabled": {
-            "type": "boolean",
-            "metadata": {
-                "description": "Whether or not the public data endpoint is enabled."
-            }
-        },
-        "sourceManagedInstanceId": {
-            "type": "string",
-            "metadata": {
-                "description": "The resource identifier of the source managed instance associated with create operation of this instance."
-            }
-        },
-        "restorePointInTime": {
-            "type": "string",
-            "metadata": {
-                "description": "Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database."
-            }
-        },
-        "proxyOverride": {
-            "type": "string",
-            "metadata": {
-                "description": "Connection type used for connecting to the instance. - Proxy, Redirect, Default."
-            }
-        },
-        "timezoneId": {
-            "type": "string",
-            "metadata": {
-                "description": "Id of the timezone. Allowed values are timezones supported by Windows."
-            }
-        },
-        "instancePoolId": {
-            "type": "string",
-            "metadata": {
-                "description": "The Id of the instance pool this managed server belongs to."
-            }
-        },
-        "minimalTlsVersion": {
-            "type": "string",
-            "metadata": {
-                "description": "Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'"
             }
         }
     },
@@ -145,9 +89,7 @@
             "name": "[parameters('Name')]",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "[parameters('skuName')]",
-                "tier": "[parameters('skuTier')]",
-                "size": "[parameters('skuSize')]"
+                "name": "[parameters('skuName')]"
             },
             "identity": {
                 "type": "SystemAssigned"
@@ -172,11 +114,5 @@
                 "minimalTlsVersion": "[parameters('minimalTlsVersion')]"
             }
         }
-    ],
-    "outputs": {
-        "id": {
-          "value": "[resourceId(Microsoft.Sql/managedInstances', parameters('name'))]",
-          "type": "string"
-        }
-    }
+    ]
 }
