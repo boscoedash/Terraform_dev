@@ -8,7 +8,7 @@ module "naming" {
 
 module "azurerm_template_deployment" {
   source      = "../ARMTemplateDeployment"
-  name                = lower(module.naming.name)
+  name                = sqlmitestbl01
   resource_group_name = var.resource_group_name
   deployment_mode     = var.deployment_mode == null ? "Incremental" : var.deployment_mode
   template_file       = var.template_file
