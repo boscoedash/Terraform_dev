@@ -11,7 +11,7 @@ resource "azurerm_template_deployment" "template_deployment" {
   parameters = {
     "name"                       = "sql-mi-test"
     "location"                   = "SouthCentralUS"
-    "tags"                       = ""
+    #"tags"                       = ""
     "skuName"                    = "GP_Gen5"
     #"skuSize"                    = ""
     #"skuTier"                    = "GeneralPurpose"
