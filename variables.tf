@@ -9,6 +9,10 @@ variable "counter" {
   default = 1
 }
 
+variable "tags" {
+  default = {}
+}
+
 variable "resource_group_name" {
   type        = string
   default = "sql-mi-test-bl"

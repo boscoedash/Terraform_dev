@@ -53,12 +53,14 @@ module "Subnet" {
 */
 
 module "sql_managed_instance_arm_template" {
-  source                         = "./Modules/SQLManagedInstance"
-  name = "sql-mi-test"
+  source              = "./Modules/SQLManagedInstance"
+  description         = var.description
+  tags                = var.tags
   resource_group_name = var.resource_group_name
   deployment_mode     = "incremental"
   template_file       = var.template_file
   parameters          = var.parameters
+  parameters_file     = {}
 }
 
 /*
