@@ -63,12 +63,14 @@
         },
         "vCores": {
             "type": "int",
+            "defaultValue": 8,
             "metadata": {
                 "description": "The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80."
             }
         },
         "storageSizeInGB": {
             "type": "int",
+            "defaultValue": 256,
             "metadata": {
                 "description": "Storage size in GB. Minimum value: 32. Maximum value: 8192. Increments of 32 GB allowed only."
             }
