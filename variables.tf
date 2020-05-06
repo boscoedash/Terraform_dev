@@ -1,28 +1,29 @@
 // SQL MI
-variable "description" {
-  type        = string
-  default = "sqlmi"
-}
 
 variable "counter" {
   type    = number
   default = 1
 }
 
+variable "resource_group_name" {
+  type        = string
+  default = "sql-mi-test"
+}
+/*
 variable "tags" {
   default = {}
 }
 
-variable "resource_group_name" {
+variable "description" {
   type        = string
-  default = "sql-mi-test"
+  default = "sqlmi"
 }
 
 variable "template_file" {
   type        = string
   default = "./Modules/SQLManagedInstance/SQLManagedInstance.json"
 }
-
+*/
 variable "parameters" {
   default = {
     "name"                       = "sql-mi-test"
