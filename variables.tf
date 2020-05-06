@@ -1,3 +1,105 @@
+// SQL MI
+variable "description" {
+  type        = string
+  default = "sqlmi"
+}
+
+variable "counter" {
+  type    = number
+  default = 1
+}
+
+variable "resource_group_name" {
+  type        = string
+  default = "sql-mi-test-bl"
+}
+
+variable "template_file" {
+  type        = string
+  default = "./Modules/SQLManagedInstance/SQLManagedInstance.json"
+}
+
+variable "deployment_mode" {
+  type        = string
+  default = "Incremental"
+}
+
+variable "skuName" {
+  type        = string
+  default = "GP_Gen5"
+}
+
+variable "skuTier" {
+  type        = string
+  default = "GeneralPurpose"
+}
+
+variable "managedInstanceCreateMode" {
+  type        = string
+  default = "default"
+}
+
+variable "administratorLogin" {
+  type        = string
+  default = "xadmin"
+}
+
+variable "administratorLoginPassword" {
+  type        = string
+  default = "!A@S3d4f5g6h7j8k"
+}
+
+variable "subnetId" {
+  type        = string
+  default = "/subscriptions/1d46d15f-334e-45e7-9b3d-93f04450e4e2/resourceGroups/SQL-MI-TEST/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
+}
+
+variable "licenseType" {
+  type        = string
+  default = "LicenseIncluded"
+}
+
+variable "vCores" {
+  type        = number
+  default = 8
+}
+
+variable "storageSizeInGB" {
+  type        = number
+  default = 256
+}
+
+variable "collation" {
+  type        = string
+  default = "SQL_Latin1_General_CP1_CI_AS"
+}
+
+variable "dnsZonePartner" {
+  type        = string
+  default = ""
+}
+
+variable "publicDataEndpointEnabled" {
+  type        = bool
+  default = false
+}
+
+variable "proxyOverride" {
+  type        = string
+  default = "Proxy"
+}
+
+variable "timezoneId" {
+  type        = string
+  default = "UTC"
+}
+
+
+// SQL MI
+
+/*
+
+// RG Block
 variable "resource_group_name" {
   default     = "RG-GW"
   description = "Name of the resource group to place App Gateway in."
@@ -6,6 +108,15 @@ variable "resource_group_location" {
   default     = "South Central US"
   description = "Location of the resource group to place App Gateway in."
 }
+// RG Block
+
+// NSG Block
+variable "securityrules" {
+  default     = "South Central US"
+}
+// NSG Block
+
+// Virtual Network Block
 variable "virtual_network_name" {
   default     = "vnet01"
   description = "Name of the vNet place App Gateway in."
@@ -14,6 +125,9 @@ variable "virtual_network_address_space" {
   default     = ["10.0.0.0/16"]
   description = "vNet Address Space."
 }
+// Virtual Network Block
+
+// Subnet Block
 variable "subnet_name" {
   default     = "subnet-gw01"
   description = "Name of the subnet place App Gateway in."
@@ -22,6 +136,8 @@ variable "subnet_address_space" {
   default     = "10.0.1.0/24"
   description = "vNet Address Space."
 }
+// Subnet Block
+
 variable "public_ip_name" {
   default     = "gw01-pip"
   description = "Name of the App Gateway PIP."
@@ -188,3 +304,4 @@ variable "application_gateway_rewrite_rule_set" {
     }
   ]
 }
+*/

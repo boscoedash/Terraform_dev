@@ -1,11 +1,29 @@
 provider "azurerm" {
   features {}
 }
-
+/*
 module "ResourceGroup" {
   source    = "./Modules/ResourceGroup"
   resource_group_name     = var.resource_group_name
   resource_group_location = var.resource_group_location
+}
+
+module "NSG" {
+  source                         = "./Modules/NSG"
+  resource_group_name     = var.resource_group_name
+  securityrules = var.securityrules
+  description = "nsg"
+  subnet_id = ""
+  depends_on = [
+    module.ResourceGroup
+  ]
+}
+
+module "RouteTable" {
+  source                         = "./Modules/RouteTable"
+  depends_on = [
+    module.ResourceGroup
+  ]
 }
 
 module "VirtualNetwork" {
@@ -14,6 +32,11 @@ module "VirtualNetwork" {
   resource_group_name           = var.resource_group_name
   resource_group_location       = var.resource_group_location
   virtual_network_address_space = var.virtual_network_address_space
+  depends_on = [
+    module.ResourceGroup,
+    module.RouteTable,
+    module.NSG
+  ]
 }
 
 module "Subnet" {
@@ -22,8 +45,50 @@ module "Subnet" {
   resource_group_name  = var.resource_group_name
   virtual_network_name = module.VirtualNetwork.virtual_network_name
   subnet_address_space = var.subnet_address_space
+  depends_on = [
+    module.ResourceGroup,
+    module.VirtualNetwork
+  ]
+}
+*/
+
+module "SQLManagedInstance" {
+  source                         = "./Modules/SQLManagedInstance"
+  name = "sql-mi-test"
+  resource_group_name = var.resource_group_name
+  deployment_mode     = "incremental"
+  template_file       = var.template_file
+  parameters = {
+    "name"                       = lower(module.naming.name)
+    "location"                   = local.location
+    "tags"                       = local.tags
+    "skuName"                    = var.skuName
+    "skuSize"                    = var.skuSize == null ? "" : var.skuSize
+    "skuTier"                    = var.skuTier == null ? "Basic" : var.skuTier
+    "managedInstanceCreateMode"  = var.managedInstanceCreateMode == null ? "default" : var.managedInstanceCreateMode
+    "administratorLogin"         = var.administratorLogin
+    "administratorLoginPassword" = var.administratorLoginPassword
+    "subnetId"                   = var.subnetId
+    "licenseType"                = var.licenseType == null ? "LicenseIncluded" : var.licenseType
+    "vCores"                     = var.vCores == null ? 16 : var.vCores
+    "storageSizeInGB"            = var.storageSizeInGB ? 32 : var.storageSizeInGB
+    "collation"                  = var.collation == null ? "SQL_Latin1_General_CP1_CI_AS" : var.collation
+    "dnsZonePartner"             = var.dnsZonePartner == null ? "" : var.dnsZonePartner
+    "publicDataEndpointEnabled"  = var.publicDataEndpointEnabled == null ? false : var.publicDataEndpointEnabled
+    "sourceManagedInstanceId"    = var.sourceManagedInstanceId == null ? "" : var.sourceManagedInstanceId
+    "restorePointInTime"         = var.restorePointInTime == null ? "" : var.restorePointInTime
+    "proxyOverride"              = var.proxyOverride == null ? "" : var.proxyOverride
+    "timezoneId"                 = var.timezoneId == null ? "UTC" : var.timezoneId
+    "instancePoolId"             = var.instancePoolId == null ? "" : var.instancePoolId
+    "minimalTlsVersion"          = var.minimalTlsVersion == null ? "" : var.instancePoolId
+  }
+  depends_on = [
+    module.ResourceGroup
+    module.Subnet
+  ]
 }
 
+/*
 module "PublicIP" {
   source                         = "./Modules/PublicIP"
   public_ip_name                 = var.public_ip_name
@@ -31,7 +96,7 @@ module "PublicIP" {
   resource_group_location        = var.resource_group_location
   public_ip_allocation_method    = var.public_ip_allocation_method
 }
-/*
+
 module "ApplicationGateway" {
   source                           = "./Modules/ApplicationGateway"
   resource_group_name             = var.resource_group_name

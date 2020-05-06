@@ -27,11 +27,6 @@ variable "parameters_file" {
   description = "Path to ARM template parameters"
 }
 
-variable "parameters" {
-  type        = map
-  description = "Key value pairs of ARM Teplate parameters"
-}
-
 variable "deployment_mode" {
   type        = string
   description = "Incremental or Complete"
