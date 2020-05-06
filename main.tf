@@ -23,7 +23,7 @@ resource "azurerm_template_deployment" "template_deployment" {
     "vCores"                     = 8
     "storageSizeInGB"            = 256
     "collation"                  = "SQL_Latin1_General_CP1_CI_AS"
-    "dnsZonePartner"             =  ""
+    "dnsZonePartner"             = ""
     "publicDataEndpointEnabled"  = false
     "sourceManagedInstanceId"    = ""
     "restorePointInTime"         = ""

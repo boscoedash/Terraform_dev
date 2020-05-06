@@ -82,12 +82,6 @@
             }
         },
         "collation": {
-            "type": "integer",
-            "metadata": {
-                "description": "Collation of the managed instance."
-            }
-        },
-        "collation": {
             "type": "string",
             "metadata": {
                 "description": "Collation of the managed instance."
