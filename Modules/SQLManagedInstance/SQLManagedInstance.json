@@ -105,7 +105,7 @@
                 "licenseType": "[parameters('licenseType')]",
                 "vCores": "[parameters('vCores')]",
                 "storageSizeInGB": "[parameters('storageSizeInGB')]",
-                "collation": "[parameters('storageSizeInGB')]"
+                "collation": "[parameters('collation')]"
             }
         }
     ]
