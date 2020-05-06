@@ -60,7 +60,7 @@ module "sql_managed_instance_arm_template" {
   deployment_mode     = "incremental"
   template_file       = var.template_file
   parameters          = var.parameters
-  parameters_file     = {}
+  parameters_file     = ""
 }
 
 /*
