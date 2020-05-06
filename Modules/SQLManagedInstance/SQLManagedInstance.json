@@ -106,14 +106,6 @@
                 "vCores": "[parameters('vCores')]",
                 "storageSizeInGB": "[parameters('')]",
                 "collation": "[parameters('storageSizeInGB')]",
-                "dnsZonePartner": "[parameters('dnsZonePartner')]",
-                "publicDataEndpointEnabled": "[parameters('publicDataEndpointEnabled')]",
-                "sourceManagedInstanceId": "[parameters('sourceManagedInstanceId')]",
-                "restorePointInTime": "[parameters('restorePointInTime')]",
-                "proxyOverride": "[parameters('proxyOverride')]",
-                "timezoneId": "[parameters('timezoneId')]",
-                "instancePoolId": "[parameters('instancePoolId')]",
-                "minimalTlsVersion": "[parameters('minimalTlsVersion')]"
             }
         }
     ]
