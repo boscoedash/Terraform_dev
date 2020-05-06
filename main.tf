@@ -52,7 +52,7 @@ module "Subnet" {
 }
 */
 
-module "SQLManagedInstance" {
+module "sql_managed_instance_arm_template" {
   source                         = "./Modules/SQLManagedInstance"
   name = "sql-mi-test"
   resource_group_name = var.resource_group_name
