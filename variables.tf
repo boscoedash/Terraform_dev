@@ -9,6 +9,12 @@ variable "resource_group_name" {
   type        = string
   default = "sql-mi-test"
 }
+
+variable "deployment_mode" {
+  type        = string
+  default = "Incremental"
+}
+
 /*
 variable "tags" {
   default = {}
