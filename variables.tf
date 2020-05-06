@@ -15,7 +15,7 @@ variable "tags" {
 
 variable "resource_group_name" {
   type        = string
-  default = "sql-mi-test-bl"
+  default = "sql-mi-test"
 }
 
 variable "template_file" {
@@ -27,7 +27,7 @@ variable "parameters" {
   default = {
     "name"                       = "sql-mi-test"
     "location"                   = "SouthCentralUS"
-    "tags"                       = {}
+    "tags"                       = ""
     "skuName"                    = "GP_Gen5"
     "skuSize"                    = ""
     "skuTier"                    = "GeneralPurpose"
@@ -36,11 +36,11 @@ variable "parameters" {
     "administratorLoginPassword" = "!A@S3d4f5g6h7j8k"
     "subnetId"                   = "/subscriptions/1d46d15f-334e-45e7-9b3d-93f04450e4e2/resourceGroups/SQL-MI-TEST/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
     "licenseType"                = "LicenseIncluded"
-    "vCores"                     = 8
-    "storageSizeInGB"            = 256
+    "vCores"                     = "8"
+    "storageSizeInGB"            = "256"
     "collation"                  = "SQL_Latin1_General_CP1_CI_AS"
     "dnsZonePartner"             =  ""
-    "publicDataEndpointEnabled"  = false
+    "publicDataEndpointEnabled"  = "false"
     "sourceManagedInstanceId"    = ""
     "restorePointInTime"         = ""
     "proxyOverride"              = "proxy"
