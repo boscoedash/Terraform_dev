@@ -1,3 +1,3 @@
 output "id" {
-  value = module.sql_managed_instance_arm_template.outputs["id"]
+  value = module.azurerm_template_deployment.outputs["id"]
 }
