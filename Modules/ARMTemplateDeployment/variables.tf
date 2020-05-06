@@ -13,11 +13,6 @@ variable "template_file" {
   description = "Path to ARM template"
 }
 
-variable "parameters_file" {
-  type        = string
-  description = "Path to ARM Teplate parameters"
-}
-
 variable "parameters" {
   type        = map
   description = "key value pairs of parameters"

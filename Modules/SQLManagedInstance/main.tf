@@ -12,6 +12,5 @@ module "azurerm_template_deployment" {
   resource_group_name = var.resource_group_name
   deployment_mode     = var.deployment_mode == null ? "Incremental" : var.deployment_mode
   template_file       = var.template_file
-  parameters_file     = var.parameters_file
   parameters          = var.parameters
 }
