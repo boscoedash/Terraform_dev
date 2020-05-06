@@ -104,7 +104,7 @@
                 "subnetId": "[parameters('subnetId')]",
                 "licenseType": "[parameters('licenseType')]",
                 "vCores": "[parameters('vCores')]",
-                "storageSizeInGB": "[parameters('')]",
+                "storageSizeInGB": "[parameters('storageSizeInGB')]",
                 "collation": "[parameters('storageSizeInGB')]"
             }
         }
