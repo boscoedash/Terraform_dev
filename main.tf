@@ -82,10 +82,6 @@ module "SQLManagedInstance" {
     "instancePoolId"             = var.instancePoolId == null ? "" : var.instancePoolId
     "minimalTlsVersion"          = var.minimalTlsVersion == null ? "" : var.instancePoolId
   }
-  depends_on = [
-    module.ResourceGroup
-    module.Subnet
-  ]
 }
 
 /*
