@@ -59,10 +59,6 @@ module "sql_managed_instance_arm_template" {
   deployment_mode     = "incremental"
   template_file       = var.template_file
   parameters          = var.parameters
-  depends_on = [
-    module.ResourceGroup
-    module.Subnet
-  ]
 }
 
 /*
