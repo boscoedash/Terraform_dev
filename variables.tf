@@ -29,7 +29,7 @@ variable "template_file" {
   type        = string
   default = "./Modules/SQLManagedInstance/SQLManagedInstance.json"
 }
-*/
+
 variable "parameters" {
   default = {
     "name"                       = "sql-mi-test"
@@ -56,6 +56,7 @@ variable "parameters" {
     "minimalTlsVersion"          = ""
   }
 }
+*/
 
 
 // SQL MI
