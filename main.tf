@@ -10,6 +10,7 @@ module "sql_mi" {
   deployment_mode     = "Incremental"
   template_file = "./Modules/SQLManagedInstance/SQLManagedInstance.json"
   name                       = "sql-mi-test"
+  tags                       = {}
   skuName                    = "GP_Gen5"
   skuSize                    = ""
   skuTier                    = "GeneralPurpose"
