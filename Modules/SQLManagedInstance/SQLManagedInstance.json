@@ -21,6 +21,20 @@
                 "description": "The name of the SKU, typically, a letter + Number code, e.g. P3."
             }
         },
+        "skuTier": {
+            "type": "string",
+            "defaultValue": "GeneralPurpose",
+            "metadata": {
+                "description": "The tier or edition of the particular SKU, e.g. Basic, Premium."
+            }
+        },
+        "skuSize": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Size of the particular SKU"
+            }
+        },
         "location": {
             "type": "string",
             "metadata": {
@@ -77,36 +91,42 @@
         },
         "collation": {
             "type": "string",
+            "defaultValue": "SQL_Latin1_General_CP1_CI_AS",
             "metadata": {
                 "description": "Collation of the managed instance."
             }
         },
         "dnsZonePartner": {
             "type": "string",
+            "defaultValue": "",
             "metadata": {
                 "description": "The resource id of another managed instance whose DNS zone this managed instance will share after creation."
             }
         },
         "publicDataEndpointEnabled": {
             "type": "bool",
+            "defaultValue": false,
             "metadata": {
                 "description": "Whether or not the public data endpoint is enabled."
             }
         },
         "sourceManagedInstanceId": {
             "type": "string",
+            "defaultValue": "",
             "metadata": {
                 "description": "The resource identifier of the source managed instance associated with create operation of this instance."
             }
         },
         "restorePointInTime": {
             "type": "string",
+            "defaultValue": "",
             "metadata": {
                 "description": "Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database."
             }
         },
         "proxyOverride": {
             "type": "string",
+            "defaultValue": "default",
             "metadata": {
                 "description": "Connection type used for connecting to the instance. - Proxy, Redirect, Default"
             }
@@ -120,12 +140,14 @@
         },
         "instancePoolId": {
             "type": "string",
+            "defaultValue": "",
             "metadata": {
                 "description": "The Id of the instance pool this managed server belongs to."
             }
         },
         "minimalTlsVersion": {
             "type": "string",
+            "defaultValue": "none",
             "metadata": {
                 "description": "Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'"
             }
@@ -140,7 +162,9 @@
             "name": "[parameters('Name')]",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "[parameters('skuName')]"
+                "name": "[parameters('skuName')]",
+                "tier": "[parameters('skuTier')]",
+                "size": "[parameters('skuSize')]"
             },
             "identity": {
                 "type": "SystemAssigned"
