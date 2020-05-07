@@ -60,7 +60,7 @@ module "sql_managed_instance_arm_template" {
           "defaultValue": ${var.dnsZonePartner == null ? "" : var.dnsZonePartner}
         },
         "publicDataEndpointEnabled": {
-          "defaultValue": ${var.publicDataEndpointEnabled == null ? "" : var.publicDataEndpointEnabled}
+          "defaultValue": ${var.publicDataEndpointEnabled == null ? false : var.publicDataEndpointEnabled}
         },
         "sourceManagedInstanceId": {
           "defaultValue": ${var.sourceManagedInstanceId == null ? "" : var.sourceManagedInstanceId}

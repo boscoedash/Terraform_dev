@@ -15,7 +15,7 @@ module "sql_mi" {
   skuTier                    = "GeneralPurpose"
   managedInstanceCreateMode  = "default"
   administratorLogin         = "xadmin"
-  administratorLoginPassword = "!A@S3d4f5g6h7j8k"
+  administratorLoginPassword = "A%%S3d4f5g6h7j8k"
   subnetId                   = "/subscriptions/1d46d15f-334e-45e7-9b3d-93f04450e4e2/resourceGroups/SQL-MI-TEST/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
   licenseType                = "LicenseIncluded"
   vCores                     = 8
