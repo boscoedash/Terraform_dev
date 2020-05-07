@@ -22,7 +22,7 @@ module "sql_mi" {
   storageSizeInGB            = 256
   collation                  = "SQL_Latin1_General_CP1_CI_AS"
   dnsZonePartner             = ""
-  publicDataEndpointEnabled  = false
+  publicDataEndpointEnabled  = "false"
   sourceManagedInstanceId    = ""
   restorePointInTime         = ""
   proxyOverride              = "proxy"
