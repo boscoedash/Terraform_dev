@@ -16,8 +16,7 @@ module "external_ase_arm_template" {
   resource_group_name = var.resource_group_name
   deployment_mode     = var.deployment_mode == null ? "Incremental" : var.deployment_mode
   template_file       = var.template_file
-  parameters_body = jsonencode(
-  {
+  parameters_body = jsonencode({
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
