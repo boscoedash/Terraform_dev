@@ -7,9 +7,9 @@ module "sql_mi" {
   description = "sqlmi"
   counter = 1
   resource_group_name = "sql-mi-test"
+  deployment_mode     = "Incremental"
   template_file = "./Modules/SQLManagedInstance/SQLManagedInstance.json"
   name                       = "sql-mi-test"
-  location                   = "SouthCentralUS"
   tags                       = ""
   skuName                    = "GP_Gen5"
   skuSize                    = ""
