@@ -79,11 +79,5 @@
                 }
             }
         }
-    ],
-    "outputs": {
-        "id": {
-          "value": "[resourceId(Microsoft.Web/hostingEnvironments', parameters('aseName'))]",
-          "type": "string"
-        }
-    }
+    ]
 }
