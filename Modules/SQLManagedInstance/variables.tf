@@ -8,10 +8,6 @@ variable "counter" {
   default = 1
 }
 
-variable "tags" {
-  type    = map
-}
-
 variable "deployment_mode" {
   type    = string
 }
