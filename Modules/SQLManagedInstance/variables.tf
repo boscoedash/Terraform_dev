@@ -92,7 +92,7 @@ variable "dnsZonePartner" {
 }
 
 variable "publicDataEndpointEnabled" {
-  type        = boolean
+  type        = bool
   description = "Whether or not the public data endpoint is enabled."
 }
 
