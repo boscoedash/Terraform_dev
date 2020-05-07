@@ -13,9 +13,9 @@ variable "template_file" {
   description = "Path to ARM template"
 }
 
-variable "parameters" {
-  type        = map
-  description = "key value pairs of parameters"
+variable "parameters_body" {
+  type        = json
+  description = "override parameters formatted as a json snippet"
 }
 
 variable "deployment_mode" {
