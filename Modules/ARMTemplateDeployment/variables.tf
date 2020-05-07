@@ -13,12 +13,11 @@ variable "template_file" {
   description = "Path to ARM template"
 }
 
-variable "parameters_body" {
-  type        = json
-  description = "override parameters formatted as a json snippet"
-}
-
 variable "deployment_mode" {
   type        = string
   description = "pecifies the mode that is used to deploy resources. This value could be either Incremental or Complete. Note that you will almost always want this to be set to Incremental otherwise the deployment will destroy all infrastructure not specified within the template, and Terraform will not be aware of this."
+}
+
+variable "parameters_body" {
+  description = "override parameters formatted as a json snippet"
 }
