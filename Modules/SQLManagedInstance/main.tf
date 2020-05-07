@@ -20,9 +20,6 @@ module "sql_managed_instance_arm_template" {
       "name": {
           "defaultValue": ${lower(module.naming.name)}
         },
-        "tags": {
-          "defaultValue": ${local.tags == null ? null : local.tags}
-        },
         "skuName": {
           "defaultValue": ${var.skuSize == null ? "" : var.skuSize}
         },
