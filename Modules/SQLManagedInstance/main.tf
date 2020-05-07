@@ -6,7 +6,7 @@ module "naming" {
   type        = "sqlmi"
 }
 
-module "azurerm_template_deployment" {
+module "sql_managed_instance_arm_template" {
   source      = "../ARMTemplateDeployment"
   name                = "sqlmitestbl01"
   resource_group_name = var.resource_group_name
@@ -22,6 +22,12 @@ module "azurerm_template_deployment" {
         },
         "tags": {
           "defaultValue": ${local.tags}
+        },
+        "skuName": {
+          "defaultValue": ${var.skuSize == null ? "" : var.skuSize}
+        },
+        "skuName": {
+          "defaultValue": ${var.skuTier == null ? "" : var.skuTier}
         },
         "skuName": {
           "defaultValue": ${var.skuName}
@@ -54,28 +60,28 @@ module "azurerm_template_deployment" {
           "defaultValue": ${var.collation}
         },
         "dnsZonePartner": {
-          "defaultValue": ${var.dnsZonePartner}
+          "defaultValue": ${var.dnsZonePartner == null ? "" : var.dnsZonePartner}
         },
         "publicDataEndpointEnabled": {
-          "defaultValue": ${var.publicDataEndpointEnabled}
+          "defaultValue": ${var.publicDataEndpointEnabled == null ? false : var.publicDataEndpointEnabled}
         },
         "sourceManagedInstanceId": {
-          "defaultValue": ${var.sourceManagedInstanceId}
+          "defaultValue": ${var.sourceManagedInstanceId == null ? "" : var.sourceManagedInstanceId}
         },
         "restorePointInTime": {
-          "defaultValue": ${var.restorePointInTime}
+          "defaultValue": ${var.restorePointInTime == null ? "" : var.restorePointInTime}
         },
         "proxyOverride": {
-          "defaultValue": ${var.proxyOverride}
+          "defaultValue": ${var.proxyOverride == null ? "" : var.proxyOverride}
         },
         "timezoneId": {
-          "defaultValue": ${var.timezoneId}
+          "defaultValue": ${var.timezoneId == null ? "" : var.timezoneId}
         },
         "instancePoolId": {
-          "defaultValue": ${var.instancePoolId}
+          "defaultValue": ${var.instancePoolId == null ? "" : var.instancePoolId}
         },
         "minimalTlsVersion": {
-          "defaultValue": ${var.minimalTlsVersion}
+          "defaultValue": ${var.minimalTlsVersion == null ? "" : var.minimalTlsVersion}
         }
     }
   }
