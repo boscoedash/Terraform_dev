@@ -19,6 +19,6 @@ variable "deployment_mode" {
 }
 
 variable "parameters_body" {
-  #type        = object
+  type        = string
   description = "override parameters formatted as a json snippet"
 }
