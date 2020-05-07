@@ -18,28 +18,28 @@ module "external_ase_arm_template" {
     "contentVersion": "1.0.0.0",
     "parameters": {
       "aseName": {
-        "defaultvalue": lower(module.naming.name)
+        "defaultvalue": ${lower(module.naming.name)}
       },
       "aseLocation": {
-        "defaultValue": local.location
+        "defaultValue": ${local.location}
       },
       "existingVirtualNetworkName": {
-        "defaultValue": var.existingVirtualNetworkName
+        "defaultValue": ${var.existingVirtualNetworkName}
       },
       "existingVirtualNetworkResourceGroup": {
-        "defaultValue": var.existingVirtualNetworkResourceGroup
+        "defaultValue": ${var.existingVirtualNetworkResourceGroup}
       },
       "subnetName": {
-        "defaultValue": var.subnetName
+        "defaultValue": ${var.subnetName}
       },
       "tags": {
-        "defaultValue": local.tags
+        "defaultValue": ${local.tags}
       },
       "internalLoadBalancingMode": {
-        "defaultValue": var.internalLoadBalancingMode == null ? 0 : var.internalLoadBalancingMode
+        "defaultValue": ${var.internalLoadBalancingMode == null ? 0 : var.internalLoadBalancingMode}
       },
       "dnsSuffix": {
-        "defaultValue": var.dnsSuffix
+        "defaultValue": ${var.dnsSuffix}
       }
     }
   }

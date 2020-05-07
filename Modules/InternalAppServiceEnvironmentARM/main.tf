@@ -13,34 +13,34 @@ module "internal_ase_arm_template" {
   deployment_mode     = var.deployment_mode == null ? "Incremental" : var.deployment_mode
   template_file       = var.template_file
   parameters_file     = var.parameters_file == null ? "" : var.parameters_file
-   parameters_body     = <<PARAMETERS
+  parameters_body     = <<PARAMETERS
   {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
       "aseName": {
-        "defaultvalue": lower(module.naming.name)
+        "defaultvalue": ${lower(module.naming.name)}
       },
       "aseLocation": {
-        "defaultValue": local.location
+        "defaultValue": ${local.location}
       },
       "existingVirtualNetworkName": {
-        "defaultValue": var.existingVirtualNetworkName
+        "defaultValue": ${var.existingVirtualNetworkName}
       },
       "existingVirtualNetworkResourceGroup": {
-        "defaultValue": var.existingVirtualNetworkResourceGroup
+        "defaultValue": ${var.existingVirtualNetworkResourceGroup}
       },
       "subnetName": {
-        "defaultValue": var.subnetName
+        "defaultValue": ${var.subnetName}
       },
       "tags": {
-        "defaultValue": local.tags
+        "defaultValue": ${local.tags}
       },
       "internalLoadBalancingMode": {
-        "defaultValue": var.internalLoadBalancingMode == null ? 3 : var.internalLoadBalancingMode
+        "defaultValue": ${var.internalLoadBalancingMode == null ? 3 : var.internalLoadBalancingMode}
       },
       "dnsSuffix": {
-        "defaultValue": var.dnsSuffix
+        "defaultValue": ${var.dnsSuffix}
       }
     }
   }
