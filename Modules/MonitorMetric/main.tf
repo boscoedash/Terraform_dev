@@ -15,13 +15,14 @@ locals {
     criteria_map  = var.criteria_map == null ? {} : var.criteria_map
     dimension_map = var.dimension_map == null ? {} : var.dimension_map
 }
+
 resource "azurerm_monitor_metric_alert" "monitor_metric_alert" {
     name                = lower(module.naming.name)
     resource_group_name = var.resource_group_name
     scopes              = var.scopes
     enabled             = var.enabled
     auto_mitigate       = var.auto_mitigate
-    description         = var.description
+    description         = var.alert_description
     frequency           = var.frequency
     severity            = var.severity
     window_size         = var.window_size

@@ -39,7 +39,7 @@ variable "auto_mitigate" {
   description = "Should the alerts in this Metric Alert be auto resolved? Defaults to true."
 }
 
-variable "description" {
+variable "alert_description" {
   type        = string
   description = "The description of this Metric Alert.."
 }
