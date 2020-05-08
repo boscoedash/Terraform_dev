@@ -128,8 +128,8 @@ resource "azurerm_app_service" "app_service" {
       for_each = local.ip_restriction_map
 
       content {
-        ip_address                = lookup(ip_restriction_map.value, "ip_address")
-        virtual_network_subnet_id = lookup(ip_restriction_map.value, "virtual_network_subnet_id")
+        ip_address                = lookup(ip_restriction.value, "ip_address")
+        virtual_network_subnet_id = lookup(ip_restriction.value, "virtual_network_subnet_id")
       }
     }
 
