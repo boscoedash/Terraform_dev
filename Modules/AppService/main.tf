@@ -3,7 +3,7 @@ module "naming" {
   counter     = var.counter
   description = var.description
   location    = local.location
-  type        = "as"
+  type        = "app"
 }
 
 locals {

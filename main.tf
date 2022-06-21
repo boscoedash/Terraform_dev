@@ -2,31 +2,49 @@ provider "azurerm" {
   features {}
 }
 
-module "sql_mi" {
-  source = "./Modules/SQLManagedInstance"
-  description = "sqlmi"
-  counter = 1
-  resource_group_name = "sql-mi-test"
-  deployment_mode     = "Incremental"
-  template_file = "./Modules/SQLManagedInstance/SQLManagedInstance.json"
-  name                       = "sql-mi-test"
-  skuName                    = "GP_Gen5"
-  skuSize                    = ""
-  skuTier                    = "GeneralPurpose"
-  managedInstanceCreateMode  = "default"
-  administratorLogin         = "xadmin"
-  administratorLoginPassword = "A%%S3d4f5g6h7j8k"
-  subnetId                   = "/subscriptions/1d46d15f-334e-45e7-9b3d-93f04450e4e2/resourceGroups/SQL-MI-TEST/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
-  licenseType                = "LicenseIncluded"
-  vCores                     = 8
-  storageSizeInGB            = 256
-  collation                  = "SQL_Latin1_General_CP1_CI_AS"
-  dnsZonePartner             = ""
-  publicDataEndpointEnabled  = false
-  sourceManagedInstanceId    = ""
-  restorePointInTime         = ""
-  proxyOverride              = "proxy"
-  timezoneId                 = "UTC"
-  instancePoolId             = ""
-  minimalTlsVersion          = ""
+module "tfdemo_resourcegroup" {
+  source              = "./Modules/ResourceGroup"
+  resource_group_name = "rg-${var.deployment_prefix}"
+  location            = var.location
+  resource_group_tags = var.resource_group_tags
+}
+
+module "tfdemo_vnet" {
+  source                        = "./Modules/VirtualNetwork"
+  virtual_network_name          = "vnt-${var.deployment_prefix}"
+  virtual_network_address_space = var.virtual_network_address_space
+  location                      = var.location
+  resource_group_name           = module.tfdemo_resourcegroup.resource_group_name
+}
+
+module "tfdemo_subnet" {
+  source               = "./Modules/Subnet"
+  subnet_name          = "default"
+  resource_group_name  = module.tfdemo_resourcegroup.resource_group_name
+  virtual_network_name = module.tfdemo_vnet.virtual_network_name
+  subnet_address_space = var.subnet_address_space
+}
+
+module "tfdemo_nic" {
+  source               = "./Modules/NetworkInterface"
+  nic_name             = "nic-${var.deployment_prefix}"
+  location             = var.location
+  resource_group_name  = module.tfdemo_resourcegroup.resource_group_name
+  ip_configuration_map = {
+    name                          = "internal"
+    subnet_id                     = module.tfdemo_subnet.id
+    private_ip_address_allocation = var.private_ip_address_allocation
+  }
+}
+
+module "tfdemo_virtual_machine" {
+  source                = "./Modules/WindowsVirtualMachine"
+  vm_name               = "${var.deployment_prefix}-vm"
+  location              = var.location
+  resource_group_name   = module.tfdemo_resourcegroup.resource_group_name
+  network_interface_ids = [module.tfdemo_nic.id]
+  vm_size               = var.vm_size
+  storage_os_disk_map   = var.storage_os_disk
+  os_profile_map        = var.os_profile
+  vm_tags               = var.vm_tags
 }
