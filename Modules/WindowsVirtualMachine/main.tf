@@ -35,9 +35,6 @@ resource "azurerm_virtual_machine" "vm" {
   }
   os_profile_windows_config {
     enable_automatic_upgrades = true
-    winrm {
-      protocol = "http"
-    }
   }
   tags = var.vm_tags
 }
