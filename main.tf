@@ -6,7 +6,7 @@ terraform {
     }
   }
     backend "azurerm" {
-        resource_group_name  = "tfstate"
+        resource_group_name  = "demo-sftp"
         storage_account_name = "bhlokanaversion"
         container_name       = "tfstate"
         key                  = "terraform.tfstate"
