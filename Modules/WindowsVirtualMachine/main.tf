@@ -33,5 +33,11 @@ resource "azurerm_virtual_machine" "vm" {
     admin_username = lookup(local.os_profile_map, "admin_username")
     admin_password = lookup(local.os_profile_map, "admin_password")
   }
+  os_profile_windows_config {
+    enable_automatic_upgrades = true
+    winrm {
+      protocol = "http"
+    }
+  }
   tags = var.vm_tags
 }
